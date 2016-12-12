@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PuzzleViewController">
+            <connections>
+                <outlet property="backGroupView" destination="Cue-aE-cyB" id="d0Z-W7-h3X"/>
+                <outlet property="borderLine" destination="aPL-NM-Nvd" id="6Pq-6R-qaf"/>
+                <outlet property="bottomView" destination="6rj-SB-8yj" id="CQn-rd-MqZ"/>
+                <outlet property="colorLint" destination="lHk-ua-aeP" id="3G4-vP-Au0"/>
+                <outlet property="photoBackColorBtn" destination="bRr-zt-8UI" id="Ssu-ty-9R8"/>
+                <outlet property="photoBorderBtn" destination="VRB-Ym-RTc" id="m3p-vb-9en"/>
+                <outlet property="photoTypeBtn" destination="Fhu-O6-Gg1" id="6zQ-vO-MbE"/>
+                <outlet property="typeLine" destination="Jgm-JQ-cBv" id="exj-sO-hRV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cue-aE-cyB">
+                    <color key="backgroundColor" red="0.90588235289999997" green="0.29411764709999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="373" id="D4t-9J-WDZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfJ-9t-gxf">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhu-O6-Gg1">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="样式">
+                                <color key="titleColor" red="0.5490196078431373" green="0.55294117647058827" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.94117647059999998" green="0.023529411760000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="photoTypeAction:" destination="-1" eventType="touchUpInside" id="qs0-Xf-uZG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRr-zt-8UI">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="样式">
+                                <color key="titleColor" red="0.54901960780000003" green="0.55294117649999996" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.94117647059999998" green="0.023529411760000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="photoBackColorAction:" destination="-1" eventType="touchUpInside" id="IRg-9l-MDc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRB-Ym-RTc">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="样式">
+                                <color key="titleColor" red="0.54901960780000003" green="0.55294117649999996" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.94117647059999998" green="0.023529411760000001" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="photoBorderAction:" destination="-1" eventType="touchUpInside" id="SC5-vH-mO8"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puzzle_select_type" translatesAutoresizingMaskIntoConstraints="NO" id="Jgm-JQ-cBv"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puzzle_select_type" translatesAutoresizingMaskIntoConstraints="NO" id="lHk-ua-aeP"/>
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="puzzle_select_type" translatesAutoresizingMaskIntoConstraints="NO" id="aPL-NM-Nvd"/>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Fhu-O6-Gg1" firstAttribute="top" secondItem="GfJ-9t-gxf" secondAttribute="top" id="0sW-qP-949"/>
+                        <constraint firstAttribute="bottom" secondItem="aPL-NM-Nvd" secondAttribute="bottom" id="2qd-lh-pet"/>
+                        <constraint firstAttribute="trailing" secondItem="VRB-Ym-RTc" secondAttribute="trailing" id="7fH-Qf-muG"/>
+                        <constraint firstItem="VRB-Ym-RTc" firstAttribute="leading" secondItem="bRr-zt-8UI" secondAttribute="trailing" id="ACe-bx-M0h"/>
+                        <constraint firstItem="Jgm-JQ-cBv" firstAttribute="centerX" secondItem="Fhu-O6-Gg1" secondAttribute="centerX" id="Caz-1Q-hnb"/>
+                        <constraint firstItem="bRr-zt-8UI" firstAttribute="width" secondItem="Fhu-O6-Gg1" secondAttribute="width" id="I55-vC-8uS"/>
+                        <constraint firstItem="Fhu-O6-Gg1" firstAttribute="leading" secondItem="GfJ-9t-gxf" secondAttribute="leading" id="KjX-ht-SGs"/>
+                        <constraint firstItem="bRr-zt-8UI" firstAttribute="centerY" secondItem="Fhu-O6-Gg1" secondAttribute="centerY" id="L1m-vQ-9YB"/>
+                        <constraint firstItem="bRr-zt-8UI" firstAttribute="centerX" secondItem="lHk-ua-aeP" secondAttribute="centerX" id="Oj4-oE-XA0"/>
+                        <constraint firstItem="bRr-zt-8UI" firstAttribute="height" secondItem="Fhu-O6-Gg1" secondAttribute="height" id="PXl-fX-CeF"/>
+                        <constraint firstItem="bRr-zt-8UI" firstAttribute="leading" secondItem="Fhu-O6-Gg1" secondAttribute="trailing" id="PvL-4h-FGR"/>
+                        <constraint firstItem="VRB-Ym-RTc" firstAttribute="width" secondItem="Fhu-O6-Gg1" secondAttribute="width" id="Q0j-cQ-jbB"/>
+                        <constraint firstItem="VRB-Ym-RTc" firstAttribute="centerX" secondItem="aPL-NM-Nvd" secondAttribute="centerX" id="W6o-af-Gto"/>
+                        <constraint firstAttribute="bottom" secondItem="lHk-ua-aeP" secondAttribute="bottom" id="YZd-Vh-cvP"/>
+                        <constraint firstItem="VRB-Ym-RTc" firstAttribute="height" secondItem="Fhu-O6-Gg1" secondAttribute="height" id="gJA-Gc-6iK"/>
+                        <constraint firstAttribute="height" constant="35" id="iBt-cB-b1Y"/>
+                        <constraint firstItem="VRB-Ym-RTc" firstAttribute="centerY" secondItem="Fhu-O6-Gg1" secondAttribute="centerY" id="kcJ-79-OkZ"/>
+                        <constraint firstAttribute="bottom" secondItem="Jgm-JQ-cBv" secondAttribute="bottom" id="lRu-m6-j1J"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rj-SB-8yj"/>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Cue-aE-cyB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="3eI-uZ-ygW"/>
+                <constraint firstItem="GfJ-9t-gxf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9kY-zS-OqX"/>
+                <constraint firstAttribute="trailing" secondItem="Cue-aE-cyB" secondAttribute="trailing" constant="30" id="Fk7-h9-zEk"/>
+                <constraint firstAttribute="trailing" secondItem="6rj-SB-8yj" secondAttribute="trailing" id="HLS-TV-NNP"/>
+                <constraint firstItem="6rj-SB-8yj" firstAttribute="top" secondItem="GfJ-9t-gxf" secondAttribute="bottom" id="JOy-FR-Osh"/>
+                <constraint firstItem="GfJ-9t-gxf" firstAttribute="top" secondItem="Cue-aE-cyB" secondAttribute="bottom" constant="45" id="Lh6-hM-baf"/>
+                <constraint firstAttribute="bottom" secondItem="6rj-SB-8yj" secondAttribute="bottom" id="OKH-QP-0l5"/>
+                <constraint firstItem="Cue-aE-cyB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="bGH-BL-jsx"/>
+                <constraint firstAttribute="trailing" secondItem="GfJ-9t-gxf" secondAttribute="trailing" id="biG-6T-HnV"/>
+                <constraint firstItem="6rj-SB-8yj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cnK-h2-GhM"/>
+            </constraints>
+            <point key="canvasLocation" x="10" y="-101"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="puzzle_select_type" width="79" height="2"/>
+    </resources>
+</document>

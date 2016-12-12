@@ -1,0 +1,84 @@
+/* 
+  ASLocalized.strings
+  SellerWaterMark
+
+  Created by yuemin3 on 2016/12/7.
+  Copyright © 2016年 hangzhou.cao. All rights reserved.
+*/
+
+/*
+ MJPropertyType.m
+ */
+"和"="和";
+
+/*
+ UIViewController+Example.m
+ */
+
+
+/*
+ UIViewController+Extension.m
+ */
+"左按钮"="左按钮";
+"取消"="取消";
+"右按钮"="右按钮";
+
+/*
+ EditLabelViewController.m
+ */
+"标签编辑"="标签编辑";
+"返回"="返回";
+"生成"="生成";
+
+/*
+ MainWaterMarkViewController.m
+ */
+"原图"="原图";
+"黑白"="黑白";
+"复古"="复古";
+"哥特"="哥特";
+"瑞华"="瑞华";
+"淡雅"="淡雅";
+"酒红"="酒红";
+"青柠"="青柠";
+"浪漫"="浪漫";
+"光晕"="光晕";
+"蓝调"="蓝调";
+"梦幻"="梦幻";
+"夜色"="夜色";
+"水印"="水印";
+"标签"="标签";
+"滤镜"="滤镜";
+"保存"="保存";
+
+/*
+ MaterialListViewController.m
+ */
+"添加标签"="添加标签";
+
+/*
+ YBPasterScrollView.m
+ */
+
+
+/*
+ ChoosePhotosViewController.m
+ */
+"简洁拼图"="简洁拼图";
+
+/*
+ MainViewViewController.m
+ */
+"拍照水印"="拍照水印";
+"批量水印"="批量水印";
+"商品海报"="商品海报";
+
+/*
+ PersonalDataViewController.m
+ */
+"完善资料"="完善资料";
+
+/*
+ UserDataViewController.m
+ */
+"个人中心"="个人中心";

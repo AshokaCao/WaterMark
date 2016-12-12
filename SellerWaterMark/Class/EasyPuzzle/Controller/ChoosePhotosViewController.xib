@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChoosePhotosViewController">
+            <connections>
+                <outlet property="beginBtn" destination="5Xz-dA-ev3" id="fwP-mt-U3l"/>
+                <outlet property="chooseCountLabel" destination="ZTh-XG-AH0" id="BwJ-87-E1J"/>
+                <outlet property="choosePictureCollectionView" destination="H5Y-Aa-FVv" id="nP2-Lu-lLp"/>
+                <outlet property="photoCollectionView" destination="xJp-QR-bTW" id="fV3-6H-3ns"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExW-QS-4Jd">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已经添加了2张照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTh-XG-AH0">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xz-dA-ev3">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="fMu-tq-d5O"/>
+                                <constraint firstAttribute="width" constant="71" id="kIc-SH-6aP"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="开始制作" backgroundImage="puzzle_begin_btn"/>
+                            <connections>
+                                <action selector="beginAction:" destination="-1" eventType="touchUpInside" id="618-tr-pkH"/>
+                            </connections>
+                        </button>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-QR-bTW">
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bey-2G-HEn">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Ri8-8m-c6m"/>
+                                <outlet property="delegate" destination="-1" id="ch5-1Q-q7y"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.094117647058823528" green="0.10588235294117647" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="5Xz-dA-ev3" firstAttribute="top" secondItem="ExW-QS-4Jd" secondAttribute="top" constant="13" id="D1R-DN-FB7"/>
+                        <constraint firstItem="5Xz-dA-ev3" firstAttribute="centerY" secondItem="ZTh-XG-AH0" secondAttribute="centerY" id="FoI-6b-65r"/>
+                        <constraint firstItem="xJp-QR-bTW" firstAttribute="leading" secondItem="ExW-QS-4Jd" secondAttribute="leading" constant="14" id="Gfi-JT-pA5"/>
+                        <constraint firstAttribute="trailing" secondItem="5Xz-dA-ev3" secondAttribute="trailing" constant="14" id="Hy4-hn-KDh"/>
+                        <constraint firstItem="xJp-QR-bTW" firstAttribute="top" secondItem="5Xz-dA-ev3" secondAttribute="bottom" constant="10" id="Q9d-4s-U5C"/>
+                        <constraint firstAttribute="trailing" secondItem="xJp-QR-bTW" secondAttribute="trailing" constant="14" id="QgZ-7B-KjP"/>
+                        <constraint firstAttribute="bottom" secondItem="xJp-QR-bTW" secondAttribute="bottom" constant="11" id="gX1-Dp-bOv"/>
+                        <constraint firstItem="ZTh-XG-AH0" firstAttribute="leading" secondItem="ExW-QS-4Jd" secondAttribute="leading" constant="14" id="jUF-8i-C2c"/>
+                        <constraint firstAttribute="height" constant="147" id="qVt-ia-5tl"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="H5Y-Aa-FVv">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Dh-H2-h3b">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hab-hH-njK"/>
+                        <outlet property="delegate" destination="-1" id="wXo-Ic-T0G"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="H5Y-Aa-FVv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="02D-GY-DQx"/>
+                <constraint firstAttribute="trailing" secondItem="ExW-QS-4Jd" secondAttribute="trailing" id="KHj-My-UgM"/>
+                <constraint firstItem="ExW-QS-4Jd" firstAttribute="top" secondItem="H5Y-Aa-FVv" secondAttribute="bottom" id="ObM-pC-oqt"/>
+                <constraint firstItem="H5Y-Aa-FVv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WKY-NG-3N0"/>
+                <constraint firstAttribute="bottom" secondItem="ExW-QS-4Jd" secondAttribute="bottom" id="Z7f-Fs-IMb"/>
+                <constraint firstItem="ExW-QS-4Jd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wsa-vA-LDX"/>
+                <constraint firstAttribute="trailing" secondItem="H5Y-Aa-FVv" secondAttribute="trailing" id="y23-94-f01"/>
+            </constraints>
+            <point key="canvasLocation" x="-94" y="-32"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="puzzle_begin_btn" width="71" height="25"/>
+    </resources>
+</document>
