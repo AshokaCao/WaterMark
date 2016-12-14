@@ -1318,7 +1318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L96B2RUGS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = /Users/yuemin3/Desktop/SellerWaterMark/SellerWaterMark/Class/Public/SellerWaterMark.pch;
+				GCC_PREFIX_HEADER = /Users/ashokacao/Desktop/WaterMark/SellerWaterMark/Class/Public/SellerWaterMark.pch;
 				INFOPLIST_FILE = SellerWaterMark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1334,7 +1334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L96B2RUGS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = /Users/yuemin3/Desktop/SellerWaterMark/SellerWaterMark/Class/Public/SellerWaterMark.pch;
+				GCC_PREFIX_HEADER = /Users/ashokacao/Desktop/WaterMark/SellerWaterMark/Class/Public/SellerWaterMark.pch;
 				INFOPLIST_FILE = SellerWaterMark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
