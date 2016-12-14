@@ -17,6 +17,9 @@
 		518124BC1DF11FDA0047A8BC /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 518124BB1DF11FDA0047A8BC /* UIView+Extension.m */; };
 		518124C41DF1645C0047A8BC /* UserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518124C21DF1645C0047A8BC /* UserDataViewController.m */; };
 		518124C51DF1645C0047A8BC /* UserDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 518124C31DF1645C0047A8BC /* UserDataViewController.xib */; };
+		5185E9211E013DE3009F6B89 /* SingleHandGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5185E91D1E013DE3009F6B89 /* SingleHandGestureRecognizer.m */; };
+		5185E9221E013DE3009F6B89 /* StickerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5185E91E1E013DE3009F6B89 /* StickerView.bundle */; };
+		5185E9231E013DE3009F6B89 /* StickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5185E9201E013DE3009F6B89 /* StickerView.m */; };
 		518AA3691DEE9E4A00BD38DE /* EditLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518AA3671DEE9E4A00BD38DE /* EditLabelViewController.m */; };
 		518AA36A1DEE9E4A00BD38DE /* EditLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 518AA3681DEE9E4A00BD38DE /* EditLabelViewController.xib */; };
 		519F3E831DF7A84600DC4B56 /* ChoosePhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519F3E811DF7A84600DC4B56 /* ChoosePhotosViewController.m */; };
@@ -137,6 +140,11 @@
 		518124C11DF1645C0047A8BC /* UserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataViewController.h; sourceTree = "<group>"; };
 		518124C21DF1645C0047A8BC /* UserDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataViewController.m; sourceTree = "<group>"; };
 		518124C31DF1645C0047A8BC /* UserDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDataViewController.xib; sourceTree = "<group>"; };
+		5185E91C1E013DE3009F6B89 /* SingleHandGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHandGestureRecognizer.h; sourceTree = "<group>"; };
+		5185E91D1E013DE3009F6B89 /* SingleHandGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHandGestureRecognizer.m; sourceTree = "<group>"; };
+		5185E91E1E013DE3009F6B89 /* StickerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StickerView.bundle; sourceTree = "<group>"; };
+		5185E91F1E013DE3009F6B89 /* StickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerView.h; sourceTree = "<group>"; };
+		5185E9201E013DE3009F6B89 /* StickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerView.m; sourceTree = "<group>"; };
 		518AA3661DEE9E4A00BD38DE /* EditLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLabelViewController.h; sourceTree = "<group>"; };
 		518AA3671DEE9E4A00BD38DE /* EditLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLabelViewController.m; sourceTree = "<group>"; };
 		518AA3681DEE9E4A00BD38DE /* EditLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLabelViewController.xib; sourceTree = "<group>"; };
@@ -368,6 +376,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		5185E91B1E013DE3009F6B89 /* StickerView-Framework */ = {
+			isa = PBXGroup;
+			children = (
+				5185E91C1E013DE3009F6B89 /* SingleHandGestureRecognizer.h */,
+				5185E91D1E013DE3009F6B89 /* SingleHandGestureRecognizer.m */,
+				5185E91E1E013DE3009F6B89 /* StickerView.bundle */,
+				5185E91F1E013DE3009F6B89 /* StickerView.h */,
+				5185E9201E013DE3009F6B89 /* StickerView.m */,
+			);
+			path = "StickerView-Framework";
+			sourceTree = "<group>";
+		};
 		51A0B0811DE80FAC00AF1FD2 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +444,7 @@
 		51A8B70E1DEBCF8A007B751C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5185E91B1E013DE3009F6B89 /* StickerView-Framework */,
 				51A8B70F1DEBCF92007B751C /* UIImage+AddFunction.h */,
 				51A8B7101DEBCF92007B751C /* UIImage+AddFunction.m */,
 				51A8B7111DEBCF92007B751C /* UIViewController+Example.h */,
@@ -1021,6 +1042,7 @@
 				518124C51DF1645C0047A8BC /* UserDataViewController.xib in Resources */,
 				51A8B70D1DEBCD83007B751C /* MainWaterMarkViewController.xib in Resources */,
 				5164FB921DED65D000AFA0FA /* MaterialListViewController.xib in Resources */,
+				5185E9221E013DE3009F6B89 /* StickerView.bundle in Resources */,
 				518124B71DF10B7F0047A8BC /* image_5@2x.png in Resources */,
 				51A18B4B1DF947DA004A57D3 /* number_four_style_2.plist in Resources */,
 				518AA36A1DEE9E4A00BD38DE /* EditLabelViewController.xib in Resources */,
@@ -1117,6 +1139,7 @@
 				51A8B7331DEBD142007B751C /* UIImage+Cut.m in Sources */,
 				51A8B7171DEBCF92007B751C /* UIImage+AddFunction.m in Sources */,
 				51B7FEDF1DE2C99A0086574F /* MainItemsCollectionViewCell.m in Sources */,
+				5185E9211E013DE3009F6B89 /* SingleHandGestureRecognizer.m in Sources */,
 				51B7FE921DE28B7E0086574F /* ViewController.m in Sources */,
 				519F3E971DF7E4F900DC4B56 /* UIButton+Help.m in Sources */,
 				51A8B7191DEBCF92007B751C /* UIViewController+Extension.m in Sources */,
@@ -1133,6 +1156,7 @@
 				518AA3691DEE9E4A00BD38DE /* EditLabelViewController.m in Sources */,
 				51A8B7541DEBFD9D007B751C /* YBCustomButton.m in Sources */,
 				51A18B2A1DF93A02004A57D3 /* GLStoryboardSelectView.m in Sources */,
+				5185E9231E013DE3009F6B89 /* StickerView.m in Sources */,
 				51A0B0851DE8352700AF1FD2 /* PersonalDataViewController.m in Sources */,
 				51A8B7321DEBD142007B751C /* UIImage+Alpha.m in Sources */,
 				51A8B7351DEBD142007B751C /* UIImage+RoundedCorner.m in Sources */,

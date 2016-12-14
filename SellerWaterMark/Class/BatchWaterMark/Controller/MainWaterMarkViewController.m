@@ -12,6 +12,8 @@
 #import "YBPasterView.h"
 #import "UIImage+AddFunction.h"
 #import "YBCustomButton.h"
+// 标签
+#import "StickerView.h"
 //#import "BlocksKit.h"
 //#import "BlocksKit+UIKit.h"
 #import "YBFilterScrollView.h"
@@ -44,7 +46,7 @@ static const CGFloat defaultPasterViewW_H = 120;
 /**底部按钮的高度*/
 static CGFloat bottomButtonH = 55;
 
-@interface MainWaterMarkViewController () <YBPasterScrollViewDelegate, YBFilterScrollViewDelegate, YBPasterViewDelegate, EditLabelViewControllerDelegate>
+@interface MainWaterMarkViewController () <YBPasterScrollViewDelegate, YBFilterScrollViewDelegate, YBPasterViewDelegate, EditLabelViewControllerDelegate, StickerViewDelegate>
 {
     NSInteger defaultIndex;
     NSString* _name;
@@ -68,6 +70,9 @@ static CGFloat bottomButtonH = 55;
 /**底部second view*/
 @property (nonatomic, strong) UIView *secView;
 @property (nonatomic ,strong) NSMutableArray *deals;
+// 标签
+@property (strong, nonatomic) StickerView *selectedSticker;
+@property (strong,nonatomic) UIDynamicAnimator * animator;
 
 @end
 
@@ -494,23 +499,32 @@ static CGFloat bottomButtonH = 55;
     return imgCut;
 }
 
-#pragma mark - YBPasterScrollViewDelegate
+#pragma mark - 标签添加
 - (void)pasterTag:(NSInteger)pasterTag pasterImage:(UIImage *)pasterImage
 {
 //    if (self.pasterView) {
 //        [self.pasterView removeFromSuperview];
 //        self.pasterView = nil;
 //    }
+    /*
     YBPasterView *pasterView = [[YBPasterView alloc]initWithFrame:CGRectMake(0, 0, defaultPasterViewW_H, defaultPasterViewW_H)];
     pasterView.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
     pasterView.pasterImage = pasterImage;
     pasterView.delegate = self;
     [self.pasterImageView addSubview:pasterView];
     self.pasterView = pasterView;
+    */
     
-    //[self.pasterViewMutArr addObject:pasterView];
-    //NSLog(@"%lu",(unsigned long)self.pasterViewMutArr.count);
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
+    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:pasterImage];
     
+    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
+    sricker.enabledControl = NO;
+    sricker.enabledBorder = NO;
+    sricker.delegate = self;
+    sricker.tag = pasterTag;
+    NSLog(@"sricker    %@",sricker);
+    [self.pasterImageView addSubview:sricker];
 }
 
 - (void)sendTag:(NSInteger)firstTag
@@ -565,6 +579,54 @@ static CGFloat bottomButtonH = 55;
 {
     return YES;
 }
+#pragma mark - StickerViewDelegate
+
+- (UIImage *)stickerView:(StickerView *)stickerView imageForRightTopControl:(CGSize)recommendedSize {
+    return [UIImage imageNamed:@"StickerView.bundle/btn_smile.png"];
+}
+
+- (UIImage *)stickerView:(StickerView *)stickerView imageForLeftBottomControl:(CGSize)recommendedSize {
+    return [UIImage imageNamed:@"StickerView.bundle/btn_flip.png"];
+}
+
+- (void)stickerViewDidTapContentView:(StickerView *)stickerView {
+    NSLog(@"Tap[%zd] ContentView", stickerView.tag);
+    if (self.selectedSticker) {
+        self.selectedSticker.enabledBorder = NO;
+        self.selectedSticker.enabledControl = NO;
+    }
+    self.selectedSticker = stickerView;
+    self.selectedSticker.enabledBorder = YES;
+    self.selectedSticker.enabledControl = YES;
+}
+
+- (void)stickerViewDidTapDeleteControl:(StickerView *)stickerView {
+    NSLog(@"Tap[%zd] DeleteControl", stickerView.tag);
+    for (UIView *subView in self.view.subviews) {
+        if ([subView isKindOfClass:[StickerView class]]) {
+            [(StickerView *)subView performTapOperation];
+            break;
+        }
+    }
+}
+
+- (void)stickerViewDidTapLeftBottomControl:(StickerView *)stickerView {
+    NSLog(@"Tap[%zd] LeftBottomControl", stickerView.tag);
+    UIImageOrientation targetOrientation = (stickerView.contentImage.imageOrientation == UIImageOrientationUp ? UIImageOrientationUpMirrored : UIImageOrientationUp);
+    UIImage *invertImage =[UIImage imageWithCGImage:stickerView.contentImage.CGImage
+                                              scale:1.0
+                                        orientation:targetOrientation];
+    stickerView.contentImage = invertImage;
+}
+
+- (void)stickerViewDidTapRightTopControl:(StickerView *)stickerView {
+    NSLog(@"Tap[%zd] RightTopControl", stickerView.tag);
+    [_animator removeAllBehaviors];
+    UISnapBehavior * snapbehavior = [[UISnapBehavior alloc] initWithItem:stickerView snapToPoint:self.view.center];
+    snapbehavior.damping = 0.65;
+    [self.animator addBehavior:snapbehavior];
+}
+
 /*
 #pragma mark - Navigation
 
