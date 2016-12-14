@@ -16,7 +16,8 @@
 /**缩放和删除按钮与图片的间隔距离*/
 #define paster_insert_space btnW_H/2
 /**总高度*/
-#define PASTER_SLIDE 220
+#define PASTER_SLIDE 45
+#define PASTER_WIDTH 160
 /**安全边框*/
 #define SECURITY_LENGTH PASTER_SLIDE/2
 
@@ -222,15 +223,17 @@
                 return;
             }
             
-            CGFloat finalWidth  = self.bounds.size.width + (wChange) ;
+//            CGFloat finalWidth  = self.bounds.size.width + (wChange) ;
             CGFloat finalHeight = self.bounds.size.height + (wChange) ;
-            if (finalWidth > PASTER_SLIDE*(1+0.5))
+            CGFloat finalWidth  = finalHeight * 3.55;
+            NSLog(@"%f    %f",finalWidth,finalHeight);
+            if (finalWidth > PASTER_WIDTH*(1+0.5))
             {
-                finalWidth = PASTER_SLIDE*(1+0.5);
+                finalWidth = PASTER_WIDTH*(1+0.5);
             }
-            if (finalWidth < PASTER_SLIDE*(1-0.5))
+            if (finalWidth < PASTER_WIDTH*(1-0.5))
             {
-                finalWidth = PASTER_SLIDE*(1-0.5) ;
+                finalWidth = PASTER_WIDTH*(1-0.5) ;
             }
             if (finalHeight > PASTER_SLIDE*(1+0.5))
             {
