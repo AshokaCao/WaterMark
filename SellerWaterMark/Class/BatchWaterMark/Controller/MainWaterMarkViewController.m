@@ -73,6 +73,7 @@ static CGFloat bottomButtonH = 55;
 // 标签
 @property (strong, nonatomic) StickerView *selectedSticker;
 @property (strong,nonatomic) UIDynamicAnimator * animator;
+@property (nonatomic ,assign) NSInteger imageIndex;
 
 @end
 
@@ -96,20 +97,25 @@ static CGFloat bottomButtonH = 55;
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    if (UIImagePNGRepresentation(self.editedImage) == nil) {
+//        
+//    } else {
+////        YBPasterView *pasterView = [[YBPasterView alloc]initWithFrame:CGRectMake(0, 0, defaultPasterViewW_H, 50)];
+//        YBPasterView *pasterView = [[YBPasterView alloc]initWithFrame:CGRectMake(0, 0, self.editedImage.size.width, self.editedImage.size.height)];
+//        pasterView.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
+//        pasterView.pasterImage = self.editedImage;
+//        pasterView.delegate = self;
+//        [self.pasterImageView addSubview:pasterView];
+//        self.pasterView = pasterView;
+//    }
+//}
+
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    if (UIImagePNGRepresentation(self.editedImage) == nil) {
-        
-    } else {
-//        YBPasterView *pasterView = [[YBPasterView alloc]initWithFrame:CGRectMake(0, 0, defaultPasterViewW_H, 50)];
-        YBPasterView *pasterView = [[YBPasterView alloc]initWithFrame:CGRectMake(0, 0, self.editedImage.size.width, self.editedImage.size.height)];
-        pasterView.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
-        pasterView.pasterImage = self.editedImage;
-        pasterView.delegate = self;
-        [self.pasterImageView addSubview:pasterView];
-        self.pasterView = pasterView;
-    }
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad {
@@ -130,11 +136,32 @@ static CGFloat bottomButtonH = 55;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [nNotification addObserver:self selector:@selector(downloadImage:) name:@"downloadImage" object:nil];
+    self.imageIndex = 10000;
 //    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ren" ofType:@"json"]];
 //    
 //    NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
 //    
 //    NSLog(@"%@",dataArray);
+}
+
+- (void)downloadImage:(NSNotification *)cender
+{
+    NSData *data = cender.userInfo[@"downloadImage"];
+    UIImage *image = [UIImage imageWithData:data];
+    NSLog(@"...............%@",image);
+    
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
+    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:image];
+    
+    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
+    sricker.enabledControl = NO;
+    sricker.enabledBorder = NO;
+    sricker.delegate = self;
+    sricker.tag = self.imageIndex;
+    NSLog(@"sricker    %@",sricker);
+    [self.pasterImageView addSubview:sricker];
+    self.imageIndex++;
 }
 
 /**
@@ -319,7 +346,7 @@ static CGFloat bottomButtonH = 55;
     // 根据当前的index切换底部的scrollView
     [self changeDecorateImageWithButtonTag:sender];
 }
-
+#pragma mark  标签按钮
 - (void)buttonWithLabel
 {
     UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -338,6 +365,8 @@ static CGFloat bottomButtonH = 55;
 {
     self.secView.hidden = YES;
     self.bottomBackView.hidden = NO;
+    self.pasterScrollView.alpha = 0.0;
+    self.pasterScrollView.hidden = YES;
     [self doneEdit];
 }
 
@@ -345,12 +374,12 @@ static CGFloat bottomButtonH = 55;
 {
     self.secView.hidden = YES;
     self.bottomBackView.hidden = NO;
+    self.pasterScrollView.alpha = 0.0;
+    self.pasterScrollView.hidden = YES;
     
 }
 
-/**
- *  根据当前的index切换底部的scrollView
- */
+#pragma mark  底部选择
 - (void)changeDecorateImageWithButtonTag:(YBCustomButton *)sender
 {
     // 当前位置是水印
@@ -415,9 +444,7 @@ static CGFloat bottomButtonH = 55;
 //    }];
 }
 
-/**
- *  导航栏的“完成”右键
- */
+#pragma mark  导航按钮
 - (void)setRightButton
 {
     [self initRightButtonWithButtonW:50 buttonH:50 title:@"保存" titleColor:RGB_COLOR(220, 50, 92, 1) touchBlock:^(UIButton *rightButton) {
@@ -477,11 +504,7 @@ static CGFloat bottomButtonH = 55;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-/**
- *  图片合成
- *
- *  @return 返回合成好的图片
- */
+#pragma mark  保存图片
 - (UIImage *)doneEdit
 {
     CGFloat org_width = self.originalImage.size.width ;
@@ -531,7 +554,10 @@ static CGFloat bottomButtonH = 55;
 {
     MaterialListViewController *material = [[MaterialListViewController alloc] init];
     material.orginalImage = self.originalImage;
-    [self.navigationController pushViewController:material animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:material];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark EditControllerDelegate
@@ -625,6 +651,15 @@ static CGFloat bottomButtonH = 55;
     UISnapBehavior * snapbehavior = [[UISnapBehavior alloc] initWithItem:stickerView snapToPoint:self.view.center];
     snapbehavior.damping = 0.65;
     [self.animator addBehavior:snapbehavior];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if (self.selectedSticker) {
+        self.selectedSticker.enabledControl = NO;
+        self.selectedSticker.enabledBorder = NO;
+        self.selectedSticker = nil;
+    }
 }
 
 /*

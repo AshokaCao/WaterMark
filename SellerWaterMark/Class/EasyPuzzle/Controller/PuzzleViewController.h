@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GLStoryboardSelectView.h"
+#import "MeituImageEditView.h"
 
-@interface PuzzleViewController : UIViewController
+@interface PuzzleViewController : UIViewController <GLStoryboardSelectViewDelegate>
 @property (nonatomic ,strong) NSMutableArray *imageArray;
 
 @property (nonatomic, strong) UIScrollView      *contentView;
