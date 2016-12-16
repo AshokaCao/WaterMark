@@ -42,7 +42,7 @@
 
     
     self.imageview = [[UIImageView alloc] initWithFrame:self.bounds];
-    _imageview.frame = CGRectMake(0, 0, MRScreenWidth * 2.5, MRScreenWidth * 2.5);
+    _imageview.frame = CGRectMake(0, 0, SCREEN_WIDTH * 2.5, SCREEN_WIDTH * 2.5);
     _imageview.userInteractionEnabled = YES;
 //    [_imageview setClipsToBounds:YES];
 //    _imageview.contentMode = UIViewContentModeScaleAspectFit;
