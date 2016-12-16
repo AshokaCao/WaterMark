@@ -35,6 +35,12 @@
 #pragma mark 导航栏标题 按钮
 - (void)setNavigationTitle
 {
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
+    
     UIView *naTitleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH - 180, 20)];
     naTitleView.backgroundColor = [UIColor clearColor];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
@@ -99,12 +105,20 @@
     EditLabelViewController *editV = [[EditLabelViewController alloc] init];
     editV.editModel = self.listArray[indexPath.row];
     editV.originalImage = self.orginalImage;
-    [self.navigationController pushViewController:editV animated:YES];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editV];
+//    [[UIApplication sharedApplication].keyWindow.rootViewController dismissViewControllerAnimated:NO completion:^{
+//        
+//    }];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
 }
 
 - (void)backClick:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (BOOL)prefersStatusBarHidden

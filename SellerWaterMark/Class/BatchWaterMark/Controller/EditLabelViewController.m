@@ -45,6 +45,10 @@
 #pragma mark 导航栏标题 按钮
 - (void)setNavigationTitle
 {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    
     UIView *naTitleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH - 180, 20)];
     naTitleView.backgroundColor = [UIColor clearColor];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
@@ -113,7 +117,9 @@
 
 - (void)backClick:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)saveClick:(UIButton *)sender
@@ -131,12 +137,13 @@
     //将图片的data转化为字符串
 //    NSString *strimage64 = [_data enco];
     
-    
+    NSDictionary *imageDic = [NSDictionary dictionaryWithObject:_data forKey:@"downloadImage"];
     [WaterMarkDealTool initialize];
     EditorLabelModel *model = [[EditorLabelModel alloc] init];
     model.editImage =  _data;
     [WaterMarkDealTool addImageDeals:model];
-    [self.navigationController pushViewController:mainMark animated:YES];
+    [nNotification postNotificationName:@"downloadImage" object:nil userInfo:imageDic];
+    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UIImage*) imageWithUIView:(UIView*) view

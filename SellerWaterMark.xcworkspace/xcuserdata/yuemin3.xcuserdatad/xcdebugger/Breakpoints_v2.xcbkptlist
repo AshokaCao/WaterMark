@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SellerWaterMark/Class/BatchWaterMark/Controller/MainWaterMarkViewController.m"
-            timestampString = "503399042.892596"
+            timestampString = "503476080.676094"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "-pasterTag:pasterImage:"
             landmarkType = "7">
          </BreakpointContent>
