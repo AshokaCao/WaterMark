@@ -35,6 +35,14 @@
     //    [(CRNavigationController *)self.navigationController setCanDragBack:NO];
     
 }
+
+
+//-(void)awakeFromNib{
+//    [super awakeFromNib];
+//    //调用此方法后，才可以获取到正确的frame
+//    [self.bottomView layoutIfNeeded];
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#181b20"];
@@ -43,6 +51,7 @@
     
     
     
+    [self.bottomView layoutIfNeeded];
     self.selectStoryBoardStyleIndex = 1;
 //    [self initNavgationBar];
     [self initResource];
@@ -53,7 +62,7 @@
 - (void)initResource
 {
     
-    self.contentView =  [[UIScrollView alloc] initWithFrame:CGRectMake(30, 41, SCREEN_WIDTH - 60, 373)];
+    self.contentView =  [[UIScrollView alloc] initWithFrame:CGRectMake(30, 86, SCREEN_WIDTH - 60, 373)];
     
     
     [self.contentView setBackgroundColor:[UIColor clearColor]];
@@ -76,7 +85,7 @@
 - (void)contentResetSizeWithCalc:(BOOL)calc
 {
     if (calc) {
-        _contentView.frame = CGRectMake(30, 41, SCREEN_WIDTH - 60, 373);
+        _contentView.frame = CGRectMake(30, 86, SCREEN_WIDTH - 60, 373);
         _contentView.contentSize = self.contentView.frame.size;
         
     }else{
@@ -134,8 +143,8 @@
     [_boardbutton setClipsToBounds:YES];
     [_editbutton setClipsToBounds:YES];
     
-    [self.boardAndEditView addSubview:_boardbutton];
-    [self.boardAndEditView addSubview:_editbutton];
+//    [self.boardAndEditView addSubview:_boardbutton];
+//    [self.boardAndEditView addSubview:_editbutton];
     
     [_boardbutton addTarget:self action:@selector(boardButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [_editbutton addTarget:self action:@selector(editButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -152,7 +161,7 @@
 //    self.bottomControlView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44-iOS7AddStatusHeight - 33 - 50, self.view.frame.size.width, 50)];
 //    
 //    
-//    [self initStoryboardView];
+    [self initStoryboardView];
 //    [self.view addSubview:_bottomControlView];
 //    [self.bottomControlView setContentSize:CGSizeMake(self.bottomControlView.frame.size.width *2, _bottomControlView.frame.size.height)];
 //    [self.bottomControlView setPagingEnabled:YES];
@@ -416,10 +425,10 @@
 
 - (void)initStoryboardView;
 {
-    _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, self.bottomControlView.frame.size.width, self.bottomControlView.frame.size.height) picCount:[self.imageArray count]];
+    _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bottomView.frame.size.height) picCount:[self.imageArray count]];
     [_storyboardView setBackgroundColor:[[UIColor colorWithHexString:@"#454545"] colorWithAlphaComponent:0.6]];
     _storyboardView.delegateSelect = self;
-    [_bottomControlView addSubview:_storyboardView];
+    [self.bottomView addSubview:_storyboardView];
 }
 
 /**
@@ -458,7 +467,7 @@
 
 - (void)contentRemoveView
 {
-    for (UIView *subView in _contentView.subviews) {
+    for (UIView *subView in self.contentView.subviews) {
         [subView removeFromSuperview];
     }
     [_contentView addSubview:self.bringPosterView];
@@ -602,7 +611,7 @@
         _contentView.contentSize = _contentView.frame.size;
         self.bringPosterView.frame = CGRectMake(0, 0, _contentView.contentSize.width, _contentView.contentSize.height);
     }
-    [self performSelector:@selector(hiddenWaitView) withObject:nil afterDelay:1.0];
+//    [self performSelector:@selector(hiddenWaitView) withObject:nil afterDelay:1.0];
     
 }
 
@@ -872,6 +881,26 @@
 }
 
 - (IBAction)photoTypeAction:(UIButton *)sender {
+    [self showBoardButton];
+    //            [self contentResetSizeWithCalc:YES];
+//    if (_selectControlButton != _storyboardButton) {
+        self.freeBgView.image = nil;
+        self.freeBgView.backgroundColor = self.selectedBoardColor?self.selectedBoardColor:[UIColor whiteColor];
+        //                [LoadingViewManager showLoadViewWithText:@"正在处理" andShimmering:YES andBlurEffect:YES inView:self.view];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self contentRemoveView];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self resetViewByStyleIndex:self.selectStoryBoardStyleIndex imageCount:self.imageArray.count];
+                //                        [LoadingViewManager hideLoadViewInView:self.view];
+            });
+            
+        });
+        
+        [self.bringPosterView setHidden:NO];
+//    }
+    
+    self.bottomControlView.contentOffset = CGPointMake(0, 0);
+    [self showStoryboardAndPoster];
     self.photoTypeBtn.selected = YES;
     self.photoBorderBtn.selected = self.photoBackColorBtn.selected = NO;
     [self bottomLineIsHidden];
