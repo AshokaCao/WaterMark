@@ -36,10 +36,11 @@
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     DLog(@"%f",SCREEN_WIDTH);
     flowLayout.itemSize = CGSizeMake(120,160);
-    if (SCREEN_WIDTH > 320) {
+    if (SCREEN_WIDTH > 375) {
         flowLayout.minimumInteritemSpacing = 42;
         flowLayout.minimumLineSpacing = 42;
     } else {
+        flowLayout.itemSize = CGSizeMake(105,160);
         flowLayout.minimumInteritemSpacing = 21;
         flowLayout.minimumLineSpacing = 21;
     }
