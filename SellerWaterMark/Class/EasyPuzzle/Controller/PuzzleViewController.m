@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *colorLint;
 @property (weak, nonatomic) IBOutlet UIImageView *borderLine;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (nonatomic ,assign) NSInteger bottomViewHeight;
 
 @end
 
@@ -36,6 +37,12 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"self.bottomView.frame.size.height     %f",self.bottomView.frame.size.height);
+    self.bottomViewHeight = self.bottomView.frame.size.height;
+}
 
 //-(void)awakeFromNib{
 //    [super awakeFromNib];
@@ -46,17 +53,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#181b20"];
+    
+    [self.bottomView setNeedsLayout];
+    [self.bottomView layoutIfNeeded];
     [self setNavigationTitle];
     [self setUpBotton];
-    
-    
-    
-    [self.bottomView layoutIfNeeded];
     self.selectStoryBoardStyleIndex = 1;
-//    [self initNavgationBar];
-    [self initResource];
+    //    [self initNavgationBar];
     _isFirst = YES;
-    
+    [self initResource];
 }
 
 - (void)initResource
@@ -425,7 +430,7 @@
 
 - (void)initStoryboardView;
 {
-    _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bottomView.frame.size.height) picCount:[self.imageArray count]];
+    _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bottomViewHeight) picCount:[self.imageArray count]];
     [_storyboardView setBackgroundColor:[[UIColor colorWithHexString:@"#454545"] colorWithAlphaComponent:0.6]];
     _storyboardView.delegateSelect = self;
     [self.bottomView addSubview:_storyboardView];

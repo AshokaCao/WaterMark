@@ -30,7 +30,7 @@
 {
     NSLog(@"高度是::::    %f",self.frame.size.height);
     _storyboardView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.frame.size.height/2, self.frame.size.width, 60)];
-    [_storyboardView setBackgroundColor:[[UIColor grayColor] colorWithAlphaComponent:0.6]];
+    [_storyboardView setBackgroundColor:[[UIColor clearColor] colorWithAlphaComponent:0.6]];
     [self addSubview:_storyboardView];
     
     CGFloat width = 116/2.0f;
