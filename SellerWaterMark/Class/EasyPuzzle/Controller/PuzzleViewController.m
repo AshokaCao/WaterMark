@@ -62,6 +62,8 @@
     //    [self initNavgationBar];
     _isFirst = YES;
     [self initResource];
+    
+    NSLog(@"SCREEN_WIDTH    %f   SCREEN_HEIGHT   %f",SCREEN_WIDTH,SCREEN_HEIGHT);
 }
 
 - (void)initResource
