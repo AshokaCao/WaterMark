@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *backGroupView;
 @property (nonatomic ,strong) LabelModel *editModel;
 @property (nonatomic ,strong) UIImage *originalImage;
+@property (nonatomic ,strong) NSString *isWaterMark;
 
 @property (nonatomic ,assign) id<EditLabelViewControllerDelegate> delegate;
 

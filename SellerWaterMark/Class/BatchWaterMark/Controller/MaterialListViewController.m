@@ -28,8 +28,6 @@
     // Do any additional setup after loading the view from its nib.
     [self setNavigationTitle];
     [self.labelCollectionView registerNib:[UINib nibWithNibName:@"LabelListItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cellItem"];
-    [self setLabelCollection];
-    [self setListForLabel];
 }
 
 #pragma mark 导航栏标题 按钮
@@ -44,7 +42,17 @@
     UIView *naTitleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH - 180, 20)];
     naTitleView.backgroundColor = [UIColor clearColor];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
-    [title setText:@"添加标签"];
+    
+    
+    [self setLabelCollection];
+    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+        [self waterMarkList];
+        [title setText:@"添加水印"];
+    } else {
+        [self setListForLabel];
+        [title setText:@"添加标签"];
+    }
+    
     [title setTextColor:[UIColor whiteColor]];
     title.textAlignment = NSTextAlignmentCenter;
     [naTitleView addSubview:title];
@@ -105,6 +113,11 @@
     EditLabelViewController *editV = [[EditLabelViewController alloc] init];
     editV.editModel = self.listArray[indexPath.row];
     editV.originalImage = self.orginalImage;
+    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+        editV.isWaterMark = @"waterMark";
+    } else {
+        
+    }
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:editV];
 //    [[UIApplication sharedApplication].keyWindow.rootViewController dismissViewControllerAnimated:NO completion:^{
 //        
@@ -126,7 +139,7 @@
     return YES;
 }
 
-#pragma mark 网络请求
+#pragma mark 标签网络请求
 - (void)setListForLabel
 {
     self.listArray = [NSMutableArray array];
@@ -154,6 +167,37 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
+}
+#pragma mark 标签网络请求
+- (void)waterMarkList
+{
+    self.listArray = [NSMutableArray array];
+    NSString *labelUrl = [NSString stringWithFormat:@"http://%@/Camera/list.ashx?fdi=1004",tLocalUrl];
+    NSLog(@"%@",labelUrl);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager GET:labelUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *labelArray = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"labelArray : %@",labelArray);
+        if (labelArray.count < 1) {
+            
+        } else {
+            for (NSDictionary *dict in labelArray) {
+                LabelModel *model = [[LabelModel alloc] init];
+                [model setValuesForKeysWithDictionary:dict];
+                [self.listArray addObject:model];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.labelCollectionView reloadData];
+            });
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

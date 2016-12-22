@@ -66,10 +66,9 @@
 
 - (void)initResource
 {
-    
     self.contentView =  [[UIScrollView alloc] initWithFrame:CGRectMake(30, 86, SCREEN_WIDTH - 60, 373)];
     
-    
+    NSLog(@"SCREEN_WIDTH   %f,SCREEN_HEIGHT  %f",SCREEN_WIDTH,SCREEN_HEIGHT);
     [self.contentView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_contentView];
     
@@ -430,8 +429,12 @@
 
 - (void)initStoryboardView;
 {
-    _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.bottomViewHeight) picCount:[self.imageArray count]];
-    [_storyboardView setBackgroundColor:[[UIColor colorWithHexString:@"#454545"] colorWithAlphaComponent:0.6]];
+    if (SCREEN_WIDTH == 375) {
+        _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 124) picCount:[self.imageArray count]];
+    } else if (SCREEN_WIDTH == 414) {
+        _storyboardView = [[GLStoryboardSelectView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 193) picCount:[self.imageArray count]];
+    }
+    [_storyboardView setBackgroundColor:[[UIColor clearColor] colorWithAlphaComponent:0.6]];
     _storyboardView.delegateSelect = self;
     [self.bottomView addSubview:_storyboardView];
 }
