@@ -22,6 +22,8 @@
 #import "MaterialListViewController.h"
 #import "EditLabelViewController.h"
 #import "WaterMarkDealTool.h"
+#import "PasterDealTool.h"
+#import "YBWaterMarkScrollView.h"
 
 #define FULL_SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define FULL_SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -41,12 +43,14 @@ typedef NS_ENUM(NSInteger, YBImageDecoration) {
 const CGFloat pasterScrollView_H = 120;
 /**空白的距离间隔*/
 extern CGFloat inset_space;
+/**空白的距离间隔*/
+extern CGFloat water_space;
 /**默认的图片上的贴纸大小*/
 static const CGFloat defaultPasterViewW_H = 120;
 /**底部按钮的高度*/
 static CGFloat bottomButtonH = 55;
 
-@interface MainWaterMarkViewController () <YBPasterScrollViewDelegate, YBFilterScrollViewDelegate, YBPasterViewDelegate, EditLabelViewControllerDelegate, StickerViewDelegate>
+@interface MainWaterMarkViewController () <YBPasterScrollViewDelegate, YBFilterScrollViewDelegate, YBPasterViewDelegate, EditLabelViewControllerDelegate, StickerViewDelegate, YBWaterMarkScrollViewDelegate>
 {
     NSInteger defaultIndex;
     NSString* _name;
@@ -74,6 +78,9 @@ static CGFloat bottomButtonH = 55;
 @property (strong, nonatomic) StickerView *selectedSticker;
 @property (strong,nonatomic) UIDynamicAnimator * animator;
 @property (nonatomic ,assign) NSInteger imageIndex;
+// 水印
+@property (nonatomic ,strong) YBWaterMarkScrollView *waterMarkScrollView;
+@property (nonatomic ,strong) NSMutableArray *waterImageArray;
 
 @end
 
@@ -199,7 +206,7 @@ static CGFloat bottomButtonH = 55;
             UIImage *image = [UIImage imageNamed:imageName];
             [mutArr addObject:image];
         }
-        self.deals =  [NSMutableArray arrayWithArray:[WaterMarkDealTool imageDeals:0]];
+        self.deals =  [NSMutableArray arrayWithArray:[PasterDealTool imageDeals:0]];
         for (EditorLabelModel *model in self.deals) {
             [mutArr addObject:[UIImage imageWithData:model.editImage]];
         }
@@ -210,9 +217,27 @@ static CGFloat bottomButtonH = 55;
     return _imageArray;
 }
 
-/**
- *  懒加载-get方法设置自定义贴纸的scrollView
- */
+- (NSMutableArray *)waterImageArray
+{
+    if (!_waterImageArray) {
+        NSMutableArray *mutArr = [NSMutableArray arrayWithCapacity:0];
+        NSArray *arr = @[@"tab_icon_cancel"];
+        for (NSString *imageName in arr) {
+            UIImage *image = [UIImage imageNamed:imageName];
+            [mutArr addObject:image];
+        }
+        self.deals =  [NSMutableArray arrayWithArray:[WaterMarkDealTool imageDeals:0]];
+        for (EditorLabelModel *model in self.deals) {
+            [mutArr addObject:[UIImage imageWithData:model.editImage]];
+        }
+        NSLog(@"mutArr   %@",mutArr);
+        _waterImageArray = mutArr;
+    }
+    return _waterImageArray;
+}
+
+
+#pragma mark  懒加载-get方法设置自定义贴纸的scrollView
 - (YBPasterScrollView *)pasterScrollView
 {
     if (!_pasterScrollView) {
@@ -227,10 +252,23 @@ static CGFloat bottomButtonH = 55;
     
     return _pasterScrollView;
 }
+#pragma mark 懒加载-get方法设置水印
+- (YBWaterMarkScrollView *)waterMarkScrollView
+{
+    if (!_waterMarkScrollView) {
+        _waterMarkScrollView = [[YBWaterMarkScrollView alloc] initScrollViewWithWaterMarkImageArray:self.waterImageArray];
+        _waterMarkScrollView.frame = CGRectMake(0, FULL_SCREEN_H - pasterScrollView_H - bottomButtonH, FULL_SCREEN_W, pasterScrollView_H);
+        _waterMarkScrollView.backgroundColor = RGB_COLOR(25, 27, 32, 1);
+        _waterMarkScrollView.showsHorizontalScrollIndicator = YES;
+        _waterMarkScrollView.bounces = YES;
+        _waterMarkScrollView.contentSize = CGSizeMake(_waterMarkScrollView.waterImage_h_w * _waterMarkScrollView.waterImageArray.count + water_space * 6, pasterScrollView_H);
+        _waterMarkScrollView.waterDelegate = self;
+    }
+    return _waterMarkScrollView;
+}
 
-/**
- *  懒加载-get方法设置自定义滤镜的scrollView
- */
+
+#pragma mark 懒加载-get方法设置自定义滤镜的scrollView
 - (YBFilterScrollView *)filterScrollView
 {
     if (!_filterScrollView) {
@@ -254,9 +292,8 @@ static CGFloat bottomButtonH = 55;
     return _filterScrollView;
 }
 
-/**
- *  设置UI
- */
+
+#pragma mark  设置UI
 - (void)setupUI
 {
     EditLabelViewController *editVC = [[EditLabelViewController alloc] init];
@@ -329,11 +366,13 @@ static CGFloat bottomButtonH = 55;
     cunstLabel.frame = CGRectMake(50, 0, self.secView.frame.size.width - 100, self.secView.frame.size.height);
     [self buttonWithLabel];
     [self.secView addSubview:cunstLabel];
+    
+    [self.view addSubview:self.waterMarkScrollView];
+    self.waterMarkScrollView.hidden = YES;
+    self.waterMarkScrollView.alpha = 0.0;
 }
 
-/**
- *  底部“滤镜”、“标签”、“贴纸”的按钮点击方法
- */
+#pragma mark 底部“滤镜”、“标签”、“贴纸”的按钮点击方法
 - (void)bottomButtonClick:(YBCustomButton *)sender
 {
     self.bottomButton.selected  = NO;
@@ -385,9 +424,9 @@ static CGFloat bottomButtonH = 55;
     // 当前位置是水印
     if (sender.tag - 5000 == YBImagePaster) {
         [UIView animateWithDuration:.5 animations:^{
-//            self.pasterScrollView.alpha = 1.0;
-//            self.pasterScrollView.hidden = NO;
-//            
+            self.waterMarkScrollView.alpha = 1.0;
+            self.waterMarkScrollView.hidden = NO;
+//
 //            if (self.pasterView) {
 //                [self.pasterView showBtn];
 //            }
@@ -407,6 +446,8 @@ static CGFloat bottomButtonH = 55;
         [UIView animateWithDuration:.5 animations:^{
             self.filterScrollView.alpha = 1.0;
             self.filterScrollView.hidden = NO;
+            self.waterMarkScrollView.alpha = 0.0;
+            self.waterMarkScrollView.hidden = YES;
         }];
     }
     else {
@@ -417,6 +458,8 @@ static CGFloat bottomButtonH = 55;
         [UIView animateWithDuration:.5 animations:^{
             self.pasterScrollView.alpha = 1.0;
             self.pasterScrollView.hidden = NO;
+            self.waterMarkScrollView.alpha = 0.0;
+            self.waterMarkScrollView.hidden = YES;
             
             if (self.pasterView) {
                 [self.pasterView showBtn];
@@ -558,6 +601,22 @@ static CGFloat bottomButtonH = 55;
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:^{
         
     }];
+}
+#pragma mark  水印点击
+- (void)firstTag:(NSInteger)first
+{
+    MaterialListViewController *material = [[MaterialListViewController alloc] init];
+    material.orginalImage = self.originalImage;
+    material.isWaterMark = @"waterMark";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:material];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:^{
+        
+    }];
+}
+
+- (void)waterMarkTag:(NSInteger)waterTag waterImage:(UIImage *)waterImage
+{
+    
 }
 
 #pragma mark EditControllerDelegate

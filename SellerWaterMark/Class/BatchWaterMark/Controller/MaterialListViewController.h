@@ -10,5 +10,6 @@
 
 @interface MaterialListViewController : UIViewController
 @property (nonatomic ,strong) UIImage *orginalImage;
+@property (nonatomic ,strong) NSString *isWaterMark;
 
 @end

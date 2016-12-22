@@ -12,6 +12,7 @@
 #import "EditListModel.h"
 #import "MJExtension.h"
 #import "WaterMarkDealTool.h"
+#import "PasterDealTool.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface EditLabelViewController () <UITextFieldDelegate>
@@ -52,7 +53,11 @@
     UIView *naTitleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH - 180, 20)];
     naTitleView.backgroundColor = [UIColor clearColor];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
-    [title setText:@"标签编辑"];
+    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+        [title setText:ASLocalizedString(@"水印编辑")];
+    } else {
+        [title setText:ASLocalizedString(@"标签编辑")];
+    }
     [title setTextColor:[UIColor whiteColor]];
     title.textAlignment = NSTextAlignmentCenter;
     [naTitleView addSubview:title];
@@ -138,10 +143,17 @@
 //    NSString *strimage64 = [_data enco];
     
     NSDictionary *imageDic = [NSDictionary dictionaryWithObject:_data forKey:@"downloadImage"];
-    [WaterMarkDealTool initialize];
-    EditorLabelModel *model = [[EditorLabelModel alloc] init];
-    model.editImage =  _data;
-    [WaterMarkDealTool addImageDeals:model];
+    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+        [WaterMarkDealTool initialize];
+        EditorLabelModel *model = [[EditorLabelModel alloc] init];
+        model.editImage =  _data;
+        [WaterMarkDealTool addImageDeals:model];
+    } else {
+        [PasterDealTool initialize];
+        EditorLabelModel *model = [[EditorLabelModel alloc] init];
+        model.editImage =  _data;
+        [PasterDealTool addPasterImageDeals:model];
+    }
     [nNotification postNotificationName:@"downloadImage" object:nil userInfo:imageDic];
     [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }

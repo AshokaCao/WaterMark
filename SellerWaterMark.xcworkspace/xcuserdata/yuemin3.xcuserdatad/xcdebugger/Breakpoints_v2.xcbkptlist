@@ -4,18 +4,28 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/Class/EasyPuzzle/Controller/PuzzleViewController.m"
-            timestampString = "504005551.778537"
+            filePath = "SellerWaterMark/Class/BatchWaterMark/Controller/EditLabelViewController.m"
+            timestampString = "504083696.412279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-saveClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/Class/EasyPuzzle/Controller/PuzzleViewController.m"
-            timestampString = "504005457.641976"
+            filePath = "SellerWaterMark/Class/BatchWaterMark/Controller/EditLabelViewController.m"
+            timestampString = "504083697.428242"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-saveClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,6 +11,12 @@
 		5164FB921DED65D000AFA0FA /* MaterialListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5164FB901DED65D000AFA0FA /* MaterialListViewController.xib */; };
 		5164FB961DED73D700AFA0FA /* LabelListItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164FB941DED73D700AFA0FA /* LabelListItemCollectionViewCell.m */; };
 		5164FB971DED73D700AFA0FA /* LabelListItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5164FB951DED73D700AFA0FA /* LabelListItemCollectionViewCell.xib */; };
+		517DF4A81E0B6F0300EBEF8F /* YBWaterMarkScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 517DF4A71E0B6F0300EBEF8F /* YBWaterMarkScrollView.m */; };
+		517DF4AB1E0BA25300EBEF8F /* PasterDealTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 517DF4AA1E0BA25300EBEF8F /* PasterDealTool.m */; };
+		517DF4AF1E0BC29700EBEF8F /* GoodsPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517DF4AD1E0BC29700EBEF8F /* GoodsPosterViewController.m */; };
+		517DF4B01E0BC29700EBEF8F /* GoodsPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517DF4AE1E0BC29700EBEF8F /* GoodsPosterViewController.xib */; };
+		517DF4B41E0BD3BA00EBEF8F /* ChoosePostersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517DF4B21E0BD3BA00EBEF8F /* ChoosePostersViewController.m */; };
+		517DF4B51E0BD3BA00EBEF8F /* ChoosePostersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517DF4B31E0BD3BA00EBEF8F /* ChoosePostersViewController.xib */; };
 		518124B71DF10B7F0047A8BC /* image_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518124B41DF10B7F0047A8BC /* image_5@2x.png */; };
 		518124B81DF10B7F0047A8BC /* preview_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 518124B51DF10B7F0047A8BC /* preview_5.png */; };
 		518124B91DF10B7F0047A8BC /* ren.json in Resources */ = {isa = PBXBuildFile; fileRef = 518124B61DF10B7F0047A8BC /* ren.json */; };
@@ -74,7 +80,6 @@
 		51A8B7341DEBD142007B751C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B72C1DEBD142007B751C /* UIImage+Resize.m */; };
 		51A8B7351DEBD142007B751C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B72E1DEBD142007B751C /* UIImage+RoundedCorner.m */; };
 		51A8B7361DEBD142007B751C /* UIImage+SplitImageIntoTwoParts.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B7301DEBD142007B751C /* UIImage+SplitImageIntoTwoParts.m */; };
-		51A8B7451DEBDC9C007B751C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B7441DEBDC9C007B751C /* TestViewController.m */; };
 		51A8B7541DEBFD9D007B751C /* YBCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B7531DEBFD9D007B751C /* YBCustomButton.m */; };
 		51A8B7571DEBFDCD007B751C /* YBFilterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B7561DEBFDCD007B751C /* YBFilterScrollView.m */; };
 		51A8B75A1DEBFE0E007B751C /* YBPasterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A8B7591DEBFE0E007B751C /* YBPasterScrollView.m */; };
@@ -132,6 +137,16 @@
 		5164FB931DED73D700AFA0FA /* LabelListItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelListItemCollectionViewCell.h; sourceTree = "<group>"; };
 		5164FB941DED73D700AFA0FA /* LabelListItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelListItemCollectionViewCell.m; sourceTree = "<group>"; };
 		5164FB951DED73D700AFA0FA /* LabelListItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelListItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		517DF4A61E0B6F0300EBEF8F /* YBWaterMarkScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBWaterMarkScrollView.h; sourceTree = "<group>"; };
+		517DF4A71E0B6F0300EBEF8F /* YBWaterMarkScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBWaterMarkScrollView.m; sourceTree = "<group>"; };
+		517DF4A91E0BA25300EBEF8F /* PasterDealTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasterDealTool.h; sourceTree = "<group>"; };
+		517DF4AA1E0BA25300EBEF8F /* PasterDealTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasterDealTool.m; sourceTree = "<group>"; };
+		517DF4AC1E0BC29700EBEF8F /* GoodsPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsPosterViewController.h; sourceTree = "<group>"; };
+		517DF4AD1E0BC29700EBEF8F /* GoodsPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsPosterViewController.m; sourceTree = "<group>"; };
+		517DF4AE1E0BC29700EBEF8F /* GoodsPosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsPosterViewController.xib; sourceTree = "<group>"; };
+		517DF4B11E0BD3BA00EBEF8F /* ChoosePostersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePostersViewController.h; sourceTree = "<group>"; };
+		517DF4B21E0BD3BA00EBEF8F /* ChoosePostersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePostersViewController.m; sourceTree = "<group>"; };
+		517DF4B31E0BD3BA00EBEF8F /* ChoosePostersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoosePostersViewController.xib; sourceTree = "<group>"; };
 		518124B41DF10B7F0047A8BC /* image_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_5@2x.png"; sourceTree = "<group>"; };
 		518124B51DF10B7F0047A8BC /* preview_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview_5.png; sourceTree = "<group>"; };
 		518124B61DF10B7F0047A8BC /* ren.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ren.json; sourceTree = "<group>"; };
@@ -224,8 +239,6 @@
 		51A8B72E1DEBD142007B751C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		51A8B72F1DEBD142007B751C /* UIImage+SplitImageIntoTwoParts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SplitImageIntoTwoParts.h"; sourceTree = "<group>"; };
 		51A8B7301DEBD142007B751C /* UIImage+SplitImageIntoTwoParts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SplitImageIntoTwoParts.m"; sourceTree = "<group>"; };
-		51A8B7431DEBDC9C007B751C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		51A8B7441DEBDC9C007B751C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		51A8B7521DEBFD9D007B751C /* YBCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBCustomButton.h; sourceTree = "<group>"; };
 		51A8B7531DEBFD9D007B751C /* YBCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBCustomButton.m; sourceTree = "<group>"; };
 		51A8B7551DEBFDCD007B751C /* YBFilterScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBFilterScrollView.h; sourceTree = "<group>"; };
@@ -406,6 +419,8 @@
 				519F3E941DF7E4F900DC4B56 /* UIButton+Help.m */,
 				519F3E951DF7E4F900DC4B56 /* UIImage+Help.h */,
 				519F3E961DF7E4F900DC4B56 /* UIImage+Help.m */,
+				517DF4A91E0BA25300EBEF8F /* PasterDealTool.h */,
+				517DF4AA1E0BA25300EBEF8F /* PasterDealTool.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -480,8 +495,8 @@
 		51A8B71D1DEBD04C007B751C /* WaterMarkImage */ = {
 			isa = PBXGroup;
 			children = (
-				51A8B7431DEBDC9C007B751C /* TestViewController.h */,
-				51A8B7441DEBDC9C007B751C /* TestViewController.m */,
+				517DF4A61E0B6F0300EBEF8F /* YBWaterMarkScrollView.h */,
+				517DF4A71E0B6F0300EBEF8F /* YBWaterMarkScrollView.m */,
 			);
 			path = WaterMarkImage;
 			sourceTree = "<group>";
@@ -735,6 +750,12 @@
 		51B7FEC81DE28B900086574F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				517DF4AC1E0BC29700EBEF8F /* GoodsPosterViewController.h */,
+				517DF4AD1E0BC29700EBEF8F /* GoodsPosterViewController.m */,
+				517DF4AE1E0BC29700EBEF8F /* GoodsPosterViewController.xib */,
+				517DF4B11E0BD3BA00EBEF8F /* ChoosePostersViewController.h */,
+				517DF4B21E0BD3BA00EBEF8F /* ChoosePostersViewController.m */,
+				517DF4B31E0BD3BA00EBEF8F /* ChoosePostersViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1016,12 +1037,14 @@
 				519F3EA21DF7F8C100DC4B56 /* PhotosCollectionViewCell.xib in Resources */,
 				51A8B7651DEBFEE3007B751C /* 3.png in Resources */,
 				51A18B4A1DF947DA004A57D3 /* number_four_style_1.plist in Resources */,
+				517DF4B51E0BD3BA00EBEF8F /* ChoosePostersViewController.xib in Resources */,
 				51A18B561DF947DA004A57D3 /* number_two_style_1.plist in Resources */,
 				51A18B501DF947DA004A57D3 /* number_three_style_1.plist in Resources */,
 				51A18B581DF947DA004A57D3 /* number_two_style_3.plist in Resources */,
 				51A18B471DF947DA004A57D3 /* number_five_style_4.plist in Resources */,
 				51A8B7631DEBFEE3007B751C /* 1.png in Resources */,
 				51B7FEE01DE2C99A0086574F /* MainItemsCollectionViewCell.xib in Resources */,
+				517DF4B01E0BC29700EBEF8F /* GoodsPosterViewController.xib in Resources */,
 				51A18B441DF947DA004A57D3 /* number_five_style_1.plist in Resources */,
 				51A8B7691DEC1D10007B751C /* bigShadow.png in Resources */,
 				51A18B4F1DF947DA004A57D3 /* number_four_style_6.plist in Resources */,
@@ -1162,6 +1185,7 @@
 				51A8B7351DEBD142007B751C /* UIImage+RoundedCorner.m in Sources */,
 				51A8B75A1DEBFE0E007B751C /* YBPasterScrollView.m in Sources */,
 				51A8B71A1DEBCF92007B751C /* UIViewController+Swizzling.m in Sources */,
+				517DF4AF1E0BC29700EBEF8F /* GoodsPosterViewController.m in Sources */,
 				51B7FEDA1DE293260086574F /* MainViewViewController.m in Sources */,
 				51A8B76D1DEC2F0F007B751C /* LabelTextViewController.m in Sources */,
 				519F3EA11DF7F8C100DC4B56 /* PhotosCollectionViewCell.m in Sources */,
@@ -1169,15 +1193,17 @@
 				519F3E921DF7E0FA00DC4B56 /* UIColor+Help.m in Sources */,
 				51B9D2BA1DE6B69C00B7DECD /* LogingViewController.m in Sources */,
 				51BB9C491DF4FE48006805CB /* WaterMarkDealTool.m in Sources */,
+				517DF4A81E0B6F0300EBEF8F /* YBWaterMarkScrollView.m in Sources */,
 				519F3E981DF7E4F900DC4B56 /* UIImage+Help.m in Sources */,
 				51A8B7571DEBFDCD007B751C /* YBFilterScrollView.m in Sources */,
 				51A8B7341DEBD142007B751C /* UIImage+Resize.m in Sources */,
 				519F3E831DF7A84600DC4B56 /* ChoosePhotosViewController.m in Sources */,
 				519F3E9C1DF7F8AC00DC4B56 /* ChoosePictureCollectionViewCell.m in Sources */,
 				51A18B261DF8FA59004A57D3 /* PuzzleViewController.m in Sources */,
+				517DF4AB1E0BA25300EBEF8F /* PasterDealTool.m in Sources */,
 				51B7FE8C1DE28B7E0086574F /* main.m in Sources */,
 				51BB9C541DF54CF4006805CB /* EditListModel.m in Sources */,
-				51A8B7451DEBDC9C007B751C /* TestViewController.m in Sources */,
+				517DF4B41E0BD3BA00EBEF8F /* ChoosePostersViewController.m in Sources */,
 				51A8B75D1DEBFE56007B751C /* YBPasterView.m in Sources */,
 				51BB9C4E1DF4FF38006805CB /* LabelModel.m in Sources */,
 			);
@@ -1346,6 +1372,27 @@
 				INFOPLIST_FILE = SellerWaterMark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"FMDB\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yueming.photomark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1362,6 +1409,27 @@
 				INFOPLIST_FILE = SellerWaterMark/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"FMDB\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"SDCycleScrollView\"",
+					"-l\"SDWebImage\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yueming.photomark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

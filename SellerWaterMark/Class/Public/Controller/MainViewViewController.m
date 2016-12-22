@@ -11,8 +11,9 @@
 #import "SDCycleScrollView.h"
 #import "LogingViewController.h"
 #import "MainWaterMarkViewController.h"
-#import "TestViewController.h"
+//#import "TestViewController.h"
 #import "ChoosePhotosViewController.h"
+#import "ChoosePostersViewController.h"
 
 @interface MainViewViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
@@ -166,6 +167,12 @@
             
         case 2: {
             ChoosePhotosViewController *chooseView = [[ChoosePhotosViewController alloc] init];
+            [self.navigationController pushViewController:chooseView animated:YES];
+        }
+            break;
+            
+        case 3: {
+            ChoosePostersViewController *chooseView = [[ChoosePostersViewController alloc] init];
             [self.navigationController pushViewController:chooseView animated:YES];
         }
             break;
