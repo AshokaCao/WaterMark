@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "LabelModel.h"
 #import "GoodsPosterViewController.h"
+#import "ChoosePhotosViewController.h"
 
 @interface ChoosePostersViewController () <XRWaterfallLayoutDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray<XRImage *> *imageArray;
@@ -115,8 +116,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GoodsPosterViewController *view = [[GoodsPosterViewController alloc] init];
-    [self.navigationController pushViewController:view animated:YES];
+//    GoodsPosterViewController *view = [[GoodsPosterViewController alloc] init];
+//    [self.navigationController pushViewController:view animated:YES];
+    
+    LabelModel *model = self.waterListArray[indexPath.row];
+    NSInteger photoCount = model.imginfo.count;
+    ChoosePhotosViewController *chooseView = [[ChoosePhotosViewController alloc] init];
+    chooseView.posterModel = model;
+    chooseView.photoCount = photoCount;
+    [self.navigationController pushViewController:chooseView animated:YES];
     NSLog(@"好的");
 }
 

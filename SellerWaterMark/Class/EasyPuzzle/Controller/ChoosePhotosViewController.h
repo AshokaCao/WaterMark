@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LabelModel.h"
 
 @interface ChoosePhotosViewController : UIViewController
+@property (nonatomic ,strong) NSString *isPuzzle;
+@property (nonatomic ,assign) NSInteger photoCount;
+@property (nonatomic ,strong) LabelModel *posterModel;
 
 @end

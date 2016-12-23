@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LabelModel.h"
 
 @interface GoodsPosterViewController : UIViewController
+@property (nonatomic ,strong) NSMutableArray *imageArray;
+@property (nonatomic ,strong) LabelModel *posterModel;
 
 @end

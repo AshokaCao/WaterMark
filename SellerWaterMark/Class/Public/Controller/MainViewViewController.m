@@ -167,6 +167,7 @@
             
         case 2: {
             ChoosePhotosViewController *chooseView = [[ChoosePhotosViewController alloc] init];
+            chooseView.isPuzzle = @"puzzle";
             [self.navigationController pushViewController:chooseView animated:YES];
         }
             break;

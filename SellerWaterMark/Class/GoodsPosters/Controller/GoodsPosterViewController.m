@@ -8,6 +8,8 @@
 
 #import "GoodsPosterViewController.h"
 #import "UIColor+Help.h"
+#import "UIImageView+AFNetworking.h"
+#import "GoodsPosterModel.h"
 
 @interface GoodsPosterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *imageBackgroudView;
@@ -16,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *templateLine;
 @property (weak, nonatomic) IBOutlet UIImageView *backLine;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+@property (nonatomic ,strong) NSMutableArray *imageLocation;
+@property (nonatomic ,strong) NSMutableArray *textLocation;
 
 @end
 
@@ -24,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationTitle];
+    [self setUpUI];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -65,6 +71,33 @@
     rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     
+}
+
+- (void)setUpUI
+{
+    self.imageLocation = [NSMutableArray array];
+    self.textLocation = [NSMutableArray array];
+    self.imageBackgroudView.backgroundColor = [UIColor whiteColor];
+    [self.posterImageView setImageWithURL:[NSURL URLWithString:self.posterModel.imgbig]];
+    // 本地获取image
+    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"patterns_1" ofType:@"json"]];
+    NSArray *diction = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
+    
+    for (NSDictionary *dic in diction) {
+//        NSLog(@"diction : %@",dic);
+        GoodsPosterModel *model = [[GoodsPosterModel alloc] init];
+        [model setValuesForKeysWithDictionary:dic[@"info"]];
+        NSLog(@"model.isImage   %d",model.isImage);
+        if (model.isImage) {
+            [self.imageLocation addObject:model];
+        } else {
+            [self.textLocation addObject:model];
+        }
+    }
+//    NSLog(@"marginInset : %@",self.imageLocation);
+//    NSString *str = diction[@"marginInset"];
+//    NSString *nowStr = [str substringWithRange:NSMakeRange(1, str.length - 2)];
+//    NSArray *imagePoint = [nowStr componentsSeparatedByString:@","];
 }
 
 - (void)backClick:(UIButton *)sender

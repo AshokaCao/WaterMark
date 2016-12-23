@@ -11,6 +11,7 @@
                 <outlet property="backLine" destination="6jx-ij-CSR" id="caq-0q-f7d"/>
                 <outlet property="bottomView" destination="4rO-Rj-SnH" id="PrG-k8-fLp"/>
                 <outlet property="imageBackgroudView" destination="3mj-qV-GQq" id="QxX-Uj-p1b"/>
+                <outlet property="posterImageView" destination="p5n-ve-3z7" id="coN-gw-j6f"/>
                 <outlet property="templateBtn" destination="pwf-M9-zNf" id="EDg-C0-idJ"/>
                 <outlet property="templateLine" destination="73O-Uw-oed" id="h0U-ZK-y2f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,8 +23,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mj-qV-GQq">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5n-ve-3z7"/>
+                    </subviews>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="p5n-ve-3z7" secondAttribute="trailing" id="2iy-Yo-L00"/>
+                        <constraint firstItem="p5n-ve-3z7" firstAttribute="leading" secondItem="3mj-qV-GQq" secondAttribute="leading" id="F3X-Ii-YTj"/>
                         <constraint firstAttribute="height" constant="385" id="H8Q-ig-oUn"/>
+                        <constraint firstAttribute="bottom" secondItem="p5n-ve-3z7" secondAttribute="bottom" id="Ne5-wK-Mz2"/>
+                        <constraint firstItem="p5n-ve-3z7" firstAttribute="top" secondItem="3mj-qV-GQq" secondAttribute="top" id="qVf-QW-UNN"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwf-M9-zNf">

@@ -10,6 +10,7 @@
 #import "ChoosePictureCollectionViewCell.h"
 #import "PhotosCollectionViewCell.h"
 #import "PuzzleViewController.h"
+#import "GoodsPosterViewController.h"
 #import "UIColor+Help.h"
 #import "UIButton+Help.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -77,7 +78,11 @@
     UIView *naTitleView = [[UIView alloc] initWithFrame:CGRectMake(50, 0, SCREEN_WIDTH - 180, 20)];
     naTitleView.backgroundColor = [UIColor clearColor];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
-    [title setText:ASLocalizedString(@"简洁拼图")];
+    if ([self.isPuzzle isEqualToString:@"puzzle"]) {
+        [title setText:ASLocalizedString(@"简洁拼图")];
+    } else {
+        [title setText:ASLocalizedString(@"选择图片")];
+    }
     [title setFont:[UIFont fontWithName:@"PingFangSC-Medium" size:18]];
     [title setTextColor:[UIColor colorWithHexString:@"#333333"]];
     title.textAlignment = NSTextAlignmentCenter;
@@ -115,14 +120,25 @@
 }
 
 - (IBAction)beginAction:(UIButton *)sender {
-    PuzzleViewController *puzzle = [[PuzzleViewController alloc] init];
-    NSMutableArray *imageArray = [NSMutableArray array];
-    for (NSIndexPath *index in self.indexArray) {
-        [imageArray addObject:self.originalPhoto[index.row]];
+    if ([self.isPuzzle isEqualToString:@"puzzle"]) {
+        PuzzleViewController *puzzle = [[PuzzleViewController alloc] init];
+        NSMutableArray *imageArray = [NSMutableArray array];
+        for (NSIndexPath *index in self.indexArray) {
+            [imageArray addObject:self.originalPhoto[index.row]];
+        }
+        puzzle.imageArray = imageArray;
+        NSLog(@"imageArray - %@",imageArray);
+        [self.navigationController pushViewController:puzzle animated:YES];
+    } else {
+        GoodsPosterViewController *poster = [[GoodsPosterViewController alloc] init];
+        NSMutableArray *imageArray = [NSMutableArray array];
+        for (NSIndexPath *index in self.indexArray) {
+            [imageArray addObject:self.originalPhoto[index.row]];
+        }
+        poster.posterModel = self.posterModel;
+        poster.imageArray = imageArray;
+        [self.navigationController pushViewController:poster animated:YES];
     }
-    puzzle.imageArray = imageArray;
-    NSLog(@"imageArray - %@",imageArray);
-    [self.navigationController pushViewController:puzzle animated:YES];
 }
 
 #pragma mark 获取相册图片
@@ -254,24 +270,56 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([collectionView isEqual:self.choosePictureCollectionView]) {
-        ChoosePictureCollectionViewCell *cell = (ChoosePictureCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        cell.selectBtn.selected = !cell.selectBtn.selected;
-        if (cell.selectBtn.selected) {
-            [self.photoArray addObject:cell.pictureImageView.image];
-            [self.indexArray addObject:indexPath];
-            [self.photoCollectionView reloadData];
-        } else {
-            [self.photoArray removeObject:cell.pictureImageView.image];
-            [self.indexArray removeObject:indexPath];
-            [self.photoCollectionView reloadData];
+    if ([self.isPuzzle isEqualToString:@"puzzle"]) {
+        if ([collectionView isEqual:self.choosePictureCollectionView]) {
+            ChoosePictureCollectionViewCell *cell = (ChoosePictureCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            cell.selectBtn.selected = !cell.selectBtn.selected;
+            if (cell.selectBtn.selected) {
+                [self.photoArray addObject:cell.pictureImageView.image];
+                [self.indexArray addObject:indexPath];
+                [self.photoCollectionView reloadData];
+            } else {
+                [self.photoArray removeObject:cell.pictureImageView.image];
+                [self.indexArray removeObject:indexPath];
+                [self.photoCollectionView reloadData];
+            }
+            
+            NSLog(@"self.photoArray- %@'",self.indexArray);
+            
+            //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
+        } else if ([collectionView isEqual:self.photoCollectionView]) {
+            
         }
+    } else {
         
-        NSLog(@"self.photoArray- %@'",self.indexArray);
-        
-//        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
-    } else if ([collectionView isEqual:self.photoCollectionView]) {
-        
+        if ([collectionView isEqual:self.choosePictureCollectionView]) {
+            ChoosePictureCollectionViewCell *cell = (ChoosePictureCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            if (self.photoArray.count < self.photoCount) {
+                cell.selectBtn.selected = !cell.selectBtn.selected;
+                if (cell.selectBtn.selected) {
+                    [self.photoArray addObject:cell.pictureImageView.image];
+                    [self.indexArray addObject:indexPath];
+                    [self.photoCollectionView reloadData];
+                } else {
+                    [self.photoArray removeObject:cell.pictureImageView.image];
+                    [self.indexArray removeObject:indexPath];
+                    [self.photoCollectionView reloadData];
+                }
+            } else {
+                if (cell.selectBtn.selected) {
+                    cell.selectBtn.selected = !cell.selectBtn.selected;
+                    [self.photoArray removeObject:cell.pictureImageView.image];
+                    [self.indexArray removeObject:indexPath];
+                    [self.photoCollectionView reloadData];
+                }
+            }
+            
+            NSLog(@"self.photoArray- %@'",self.indexArray);
+            
+            //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
+        } else if ([collectionView isEqual:self.photoCollectionView]) {
+            
+        }
     }
 }
 //定义每个UICollectionView 的间距

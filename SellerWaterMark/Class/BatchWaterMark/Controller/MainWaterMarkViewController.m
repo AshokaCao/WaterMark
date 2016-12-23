@@ -616,7 +616,16 @@ static CGFloat bottomButtonH = 55;
 
 - (void)waterMarkTag:(NSInteger)waterTag waterImage:(UIImage *)waterImage
 {
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
+    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:waterImage];
     
+    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
+    sricker.enabledControl = NO;
+    sricker.enabledBorder = NO;
+    sricker.delegate = self;
+    sricker.tag = waterTag;
+    NSLog(@"sricker    %@",sricker);
+    [self.pasterImageView addSubview:sricker];
 }
 
 #pragma mark EditControllerDelegate
