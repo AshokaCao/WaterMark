@@ -69,7 +69,7 @@
 
 - (void)backClick:(UIButton *)sender
 {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)photoClick:(UIButton *)sender

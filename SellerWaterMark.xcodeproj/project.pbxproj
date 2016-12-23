@@ -110,6 +110,11 @@
 		51BB9C4E1DF4FF38006805CB /* LabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BB9C4D1DF4FF38006805CB /* LabelModel.m */; };
 		51BB9C511DF50043006805CB /* EditorLabelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BB9C501DF50043006805CB /* EditorLabelModel.m */; };
 		51BB9C541DF54CF4006805CB /* EditListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BB9C531DF54CF4006805CB /* EditListModel.m */; };
+		77985EF61E0C0A3000A3C8D8 /* XRWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 77985EF51E0C0A3000A3C8D8 /* XRWaterfallLayout.m */; };
+		77985EFC1E0C0AF500A3C8D8 /* XRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 77985EFB1E0C0AF500A3C8D8 /* XRImage.m */; };
+		77985F0B1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77985F091E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.m */; };
+		77985F0C1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77985F0A1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib */; };
+		77EE32E81E0CCAA2007AF146 /* 1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77EE32E71E0CCAA2007AF146 /* 1.plist */; };
 		D276A82740059DCB426D6AB4 /* libPods-SellerWaterMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 713D8C61066849FDB2567C1D /* libPods-SellerWaterMark.a */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +297,14 @@
 		51BB9C531DF54CF4006805CB /* EditListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditListModel.m; sourceTree = "<group>"; };
 		6BC9E75786733EE48C83328A /* Pods-SellerWaterMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellerWaterMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SellerWaterMark/Pods-SellerWaterMark.debug.xcconfig"; sourceTree = "<group>"; };
 		713D8C61066849FDB2567C1D /* libPods-SellerWaterMark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SellerWaterMark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77985EF41E0C0A3000A3C8D8 /* XRWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRWaterfallLayout.h; sourceTree = "<group>"; };
+		77985EF51E0C0A3000A3C8D8 /* XRWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRWaterfallLayout.m; sourceTree = "<group>"; };
+		77985EFA1E0C0AF500A3C8D8 /* XRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRImage.h; sourceTree = "<group>"; };
+		77985EFB1E0C0AF500A3C8D8 /* XRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRImage.m; sourceTree = "<group>"; };
+		77985F081E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFallCollectionViewCell.h; sourceTree = "<group>"; };
+		77985F091E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFallCollectionViewCell.m; sourceTree = "<group>"; };
+		77985F0A1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterFallCollectionViewCell.xib; sourceTree = "<group>"; };
+		77EE32E71E0CCAA2007AF146 /* 1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = 1.plist; sourceTree = "<group>"; };
 		E5D7CF897061E6A9749577D6 /* Pods-SellerWaterMark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SellerWaterMark.release.xcconfig"; path = "Pods/Target Support Files/Pods-SellerWaterMark/Pods-SellerWaterMark.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -579,6 +592,7 @@
 				51B7FE961DE28B7E0086574F /* Assets.xcassets */,
 				51B7FE981DE28B7E0086574F /* LaunchScreen.storyboard */,
 				51B7FE9B1DE28B7E0086574F /* Info.plist */,
+				77EE32E71E0CCAA2007AF146 /* 1.plist */,
 				51B7FE8A1DE28B7E0086574F /* Supporting Files */,
 			);
 			path = SellerWaterMark;
@@ -742,6 +756,7 @@
 			children = (
 				51B7FEC81DE28B900086574F /* Controller */,
 				51B7FEC91DE28B900086574F /* Mode */,
+				77985EF31E0C0A3000A3C8D8 /* XRWaterfallLayout */,
 				51B7FECA1DE28B900086574F /* View */,
 			);
 			path = GoodsPosters;
@@ -770,6 +785,9 @@
 		51B7FECA1DE28B900086574F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				77985F081E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.h */,
+				77985F091E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.m */,
+				77985F0A1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -900,6 +918,17 @@
 			children = (
 			);
 			path = WaterMark;
+			sourceTree = "<group>";
+		};
+		77985EF31E0C0A3000A3C8D8 /* XRWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				77985EFA1E0C0AF500A3C8D8 /* XRImage.h */,
+				77985EFB1E0C0AF500A3C8D8 /* XRImage.m */,
+				77985EF41E0C0A3000A3C8D8 /* XRWaterfallLayout.h */,
+				77985EF51E0C0A3000A3C8D8 /* XRWaterfallLayout.m */,
+			);
+			path = XRWaterfallLayout;
 			sourceTree = "<group>";
 		};
 		B815EE1D5244A42238DDA1A3 /* Pods */ = {
@@ -1067,6 +1096,7 @@
 				5164FB921DED65D000AFA0FA /* MaterialListViewController.xib in Resources */,
 				5185E9221E013DE3009F6B89 /* StickerView.bundle in Resources */,
 				518124B71DF10B7F0047A8BC /* image_5@2x.png in Resources */,
+				77985F0C1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib in Resources */,
 				51A18B4B1DF947DA004A57D3 /* number_four_style_2.plist in Resources */,
 				518AA36A1DEE9E4A00BD38DE /* EditLabelViewController.xib in Resources */,
 				51B7FE971DE28B7E0086574F /* Assets.xcassets in Resources */,
@@ -1074,6 +1104,7 @@
 				519F3E841DF7A84600DC4B56 /* ChoosePhotosViewController.xib in Resources */,
 				518124B81DF10B7F0047A8BC /* preview_5.png in Resources */,
 				51A18B541DF947DA004A57D3 /* number_three_style_5.plist in Resources */,
+				77EE32E81E0CCAA2007AF146 /* 1.plist in Resources */,
 				51B7FEDB1DE293260086574F /* MainViewViewController.xib in Resources */,
 				51A18B521DF947DA004A57D3 /* number_three_style_3.plist in Resources */,
 				51A18B461DF947DA004A57D3 /* number_five_style_3.plist in Resources */,
@@ -1168,6 +1199,7 @@
 				51A8B7191DEBCF92007B751C /* UIViewController+Extension.m in Sources */,
 				51BB9C511DF50043006805CB /* EditorLabelModel.m in Sources */,
 				51A8B7181DEBCF92007B751C /* UIViewController+Example.m in Sources */,
+				77985F0B1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.m in Sources */,
 				518124C41DF1645C0047A8BC /* UserDataViewController.m in Sources */,
 				51A18B611DF95930004A57D3 /* MeituImageEditView.m in Sources */,
 				5164FB961DED73D700AFA0FA /* LabelListItemCollectionViewCell.m in Sources */,
@@ -1197,8 +1229,10 @@
 				519F3E981DF7E4F900DC4B56 /* UIImage+Help.m in Sources */,
 				51A8B7571DEBFDCD007B751C /* YBFilterScrollView.m in Sources */,
 				51A8B7341DEBD142007B751C /* UIImage+Resize.m in Sources */,
+				77985EFC1E0C0AF500A3C8D8 /* XRImage.m in Sources */,
 				519F3E831DF7A84600DC4B56 /* ChoosePhotosViewController.m in Sources */,
 				519F3E9C1DF7F8AC00DC4B56 /* ChoosePictureCollectionViewCell.m in Sources */,
+				77985EF61E0C0A3000A3C8D8 /* XRWaterfallLayout.m in Sources */,
 				51A18B261DF8FA59004A57D3 /* PuzzleViewController.m in Sources */,
 				517DF4AB1E0BA25300EBEF8F /* PasterDealTool.m in Sources */,
 				51B7FE8C1DE28B7E0086574F /* main.m in Sources */,
