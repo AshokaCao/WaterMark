@@ -159,9 +159,13 @@
             
         case 1: {
             
-            MainWaterMarkViewController *waterMark = [MainWaterMarkViewController new];
-            waterMark.originalImage = [UIImage imageNamed:@"bianjitupian_bg"];
-            [self.navigationController pushViewController:waterMark animated:YES];
+//            MainWaterMarkViewController *waterMark = [MainWaterMarkViewController new];
+//            waterMark.originalImage = [UIImage imageNamed:@"bianjitupian_bg"];
+//            [self.navigationController pushViewController:waterMark animated:YES];
+            
+            ChoosePhotosViewController *chooseView = [[ChoosePhotosViewController alloc] init];
+            chooseView.isPuzzle = @"batch";
+            [self.navigationController pushViewController:chooseView animated:YES];
         }
             break;
             

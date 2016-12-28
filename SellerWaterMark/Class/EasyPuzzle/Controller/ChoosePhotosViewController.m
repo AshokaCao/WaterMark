@@ -11,6 +11,7 @@
 #import "PhotosCollectionViewCell.h"
 #import "PuzzleViewController.h"
 #import "GoodsPosterViewController.h"
+#import "BatchPhotoViewController.h"
 #import "UIColor+Help.h"
 #import "UIButton+Help.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -80,6 +81,8 @@
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, naTitleView.frame.size.width, naTitleView.frame.size.height)];
     if ([self.isPuzzle isEqualToString:@"puzzle"]) {
         [title setText:ASLocalizedString(@"简洁拼图")];
+    } else if ([self.isPuzzle isEqualToString:@"batch"]) {
+        [title setText:ASLocalizedString(@"选择图片")];
     } else {
         [title setText:ASLocalizedString(@"选择图片")];
     }
@@ -129,6 +132,14 @@
         puzzle.imageArray = imageArray;
         NSLog(@"imageArray - %@",imageArray);
         [self.navigationController pushViewController:puzzle animated:YES];
+    } else if ([self.isPuzzle isEqualToString:@"batch"]) {
+        NSLog(@"lksjflksj");
+        BatchPhotoViewController *batch = [[BatchPhotoViewController alloc] init];NSMutableArray *imageArray = [NSMutableArray array];
+        for (NSIndexPath *index in self.indexArray) {
+            [imageArray addObject:self.originalPhoto[index.row]];
+        }
+        batch.imageArray = imageArray;
+        [self.navigationController pushViewController:batch animated:YES];
     } else {
         GoodsPosterViewController *poster = [[GoodsPosterViewController alloc] init];
         NSMutableArray *imageArray = [NSMutableArray array];
@@ -271,6 +282,26 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.isPuzzle isEqualToString:@"puzzle"]) {
+        if ([collectionView isEqual:self.choosePictureCollectionView]) {
+            ChoosePictureCollectionViewCell *cell = (ChoosePictureCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            cell.selectBtn.selected = !cell.selectBtn.selected;
+            if (cell.selectBtn.selected) {
+                [self.photoArray addObject:cell.pictureImageView.image];
+                [self.indexArray addObject:indexPath];
+                [self.photoCollectionView reloadData];
+            } else {
+                [self.photoArray removeObject:cell.pictureImageView.image];
+                [self.indexArray removeObject:indexPath];
+                [self.photoCollectionView reloadData];
+            }
+            
+            NSLog(@"self.photoArray- %@'",self.indexArray);
+            
+            //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
+        } else if ([collectionView isEqual:self.photoCollectionView]) {
+            
+        }
+    } else if ([self.isPuzzle isEqualToString:@"batch"]) {
         if ([collectionView isEqual:self.choosePictureCollectionView]) {
             ChoosePictureCollectionViewCell *cell = (ChoosePictureCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
             cell.selectBtn.selected = !cell.selectBtn.selected;

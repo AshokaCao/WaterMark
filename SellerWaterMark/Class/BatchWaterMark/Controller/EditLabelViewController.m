@@ -101,7 +101,11 @@
     
     self.compositeImageView = imageView;
 //    imageView.image = [UIImage imageNamed:diction[@"image"]];
-    imageView.size = CGSizeMake(237/2, 100/2);
+    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+        imageView.size = CGSizeMake(220, 220);
+    } else {
+        imageView.size = CGSizeMake(237/2, 100/2);
+    }
     [self.backGroupView addSubview:imageView];
     imageView.center = CGPointMake(SCREEN_WIDTH / 2, self.backGroupView.constraints[0].constant / 2);
     
@@ -148,13 +152,14 @@
         EditorLabelModel *model = [[EditorLabelModel alloc] init];
         model.editImage =  _data;
         [WaterMarkDealTool addImageDeals:model];
+        [nNotification postNotificationName:@"waterMarkImage" object:nil userInfo:imageDic];
     } else {
         [PasterDealTool initialize];
         EditorLabelModel *model = [[EditorLabelModel alloc] init];
         model.editImage =  _data;
         [PasterDealTool addPasterImageDeals:model];
+        [nNotification postNotificationName:@"labelImage" object:nil userInfo:imageDic];
     }
-    [nNotification postNotificationName:@"downloadImage" object:nil userInfo:imageDic];
     [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

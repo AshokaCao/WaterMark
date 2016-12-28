@@ -28,6 +28,9 @@
 		5185E9231E013DE3009F6B89 /* StickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5185E9201E013DE3009F6B89 /* StickerView.m */; };
 		518AA3691DEE9E4A00BD38DE /* EditLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518AA3671DEE9E4A00BD38DE /* EditLabelViewController.m */; };
 		518AA36A1DEE9E4A00BD38DE /* EditLabelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 518AA3681DEE9E4A00BD38DE /* EditLabelViewController.xib */; };
+		5195AD1A1E123C80006E542B /* BatchPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195AD181E123C80006E542B /* BatchPhotoViewController.m */; };
+		5195AD1B1E123C80006E542B /* BatchPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5195AD191E123C80006E542B /* BatchPhotoViewController.xib */; };
+		5195AD1E1E1243A5006E542B /* BatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5195AD1D1E1243A5006E542B /* BatchView.m */; };
 		519F3E831DF7A84600DC4B56 /* ChoosePhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 519F3E811DF7A84600DC4B56 /* ChoosePhotosViewController.m */; };
 		519F3E841DF7A84600DC4B56 /* ChoosePhotosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 519F3E821DF7A84600DC4B56 /* ChoosePhotosViewController.xib */; };
 		519F3E871DF7ACCB00DC4B56 /* ASLocalized.strings in Resources */ = {isa = PBXBuildFile; fileRef = 519F3E891DF7ACCB00DC4B56 /* ASLocalized.strings */; };
@@ -177,6 +180,11 @@
 		518AA3661DEE9E4A00BD38DE /* EditLabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditLabelViewController.h; sourceTree = "<group>"; };
 		518AA3671DEE9E4A00BD38DE /* EditLabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditLabelViewController.m; sourceTree = "<group>"; };
 		518AA3681DEE9E4A00BD38DE /* EditLabelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditLabelViewController.xib; sourceTree = "<group>"; };
+		5195AD171E123C80006E542B /* BatchPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchPhotoViewController.h; sourceTree = "<group>"; };
+		5195AD181E123C80006E542B /* BatchPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchPhotoViewController.m; sourceTree = "<group>"; };
+		5195AD191E123C80006E542B /* BatchPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BatchPhotoViewController.xib; sourceTree = "<group>"; };
+		5195AD1C1E1243A5006E542B /* BatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchView.h; sourceTree = "<group>"; };
+		5195AD1D1E1243A5006E542B /* BatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchView.m; sourceTree = "<group>"; };
 		519F3E801DF7A84600DC4B56 /* ChoosePhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePhotosViewController.h; sourceTree = "<group>"; };
 		519F3E811DF7A84600DC4B56 /* ChoosePhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePhotosViewController.m; sourceTree = "<group>"; };
 		519F3E821DF7A84600DC4B56 /* ChoosePhotosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoosePhotosViewController.xib; sourceTree = "<group>"; };
@@ -873,6 +881,9 @@
 		51B7FED01DE28B900086574F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5195AD171E123C80006E542B /* BatchPhotoViewController.h */,
+				5195AD181E123C80006E542B /* BatchPhotoViewController.m */,
+				5195AD191E123C80006E542B /* BatchPhotoViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -887,6 +898,8 @@
 		51B7FED21DE28B900086574F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5195AD1C1E1243A5006E542B /* BatchView.h */,
+				5195AD1D1E1243A5006E542B /* BatchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1115,6 +1128,7 @@
 				517DF4B01E0BC29700EBEF8F /* GoodsPosterViewController.xib in Resources */,
 				51A18B441DF947DA004A57D3 /* number_five_style_1.plist in Resources */,
 				51C5ABE11E0D0A3A00A70424 /* patterns_6.json in Resources */,
+				5195AD1B1E123C80006E542B /* BatchPhotoViewController.xib in Resources */,
 				51A8B7691DEC1D10007B751C /* bigShadow.png in Resources */,
 				51A18B4F1DF947DA004A57D3 /* number_four_style_6.plist in Resources */,
 				51A8B7641DEBFEE3007B751C /* 2.png in Resources */,
@@ -1251,9 +1265,11 @@
 				5164FB961DED73D700AFA0FA /* LabelListItemCollectionViewCell.m in Sources */,
 				51A8B7361DEBD142007B751C /* UIImage+SplitImageIntoTwoParts.m in Sources */,
 				5164FB911DED65D000AFA0FA /* MaterialListViewController.m in Sources */,
+				5195AD1A1E123C80006E542B /* BatchPhotoViewController.m in Sources */,
 				51A8B70C1DEBCD83007B751C /* MainWaterMarkViewController.m in Sources */,
 				518124BC1DF11FDA0047A8BC /* UIView+Extension.m in Sources */,
 				51B7FE8F1DE28B7E0086574F /* AppDelegate.m in Sources */,
+				5195AD1E1E1243A5006E542B /* BatchView.m in Sources */,
 				518AA3691DEE9E4A00BD38DE /* EditLabelViewController.m in Sources */,
 				51A8B7541DEBFD9D007B751C /* YBCustomButton.m in Sources */,
 				51A18B2A1DF93A02004A57D3 /* GLStoryboardSelectView.m in Sources */,

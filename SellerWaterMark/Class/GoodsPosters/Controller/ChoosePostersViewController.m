@@ -125,7 +125,6 @@
     chooseView.posterModel = model;
     chooseView.photoCount = photoCount;
     [self.navigationController pushViewController:chooseView animated:YES];
-    NSLog(@"好的");
 }
 
 - (void)backClick:(UIButton *)sender
