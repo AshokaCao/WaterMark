@@ -64,17 +64,21 @@
     self.navigationItem.titleView = naTitleView;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(14, 0, 70, 50);
+    button.frame = CGRectMake(7, 0, 70, 50);
     [button setTitle:@"返回" forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"photo_navi_back"] forState:UIControlStateNormal];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0,0.0, 0)];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 7, 0, 0)];
     [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -14;//这个值可以根据自己需要自己调整
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(14, 0, 70, 50);
+    rightBtn.frame = CGRectMake(7, 0, 70, 50);
     [rightBtn setTitle:@"生成" forState:UIControlStateNormal];
     [rightBtn setTitleColor:RGB_COLOR(220, 50, 92, 1) forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(saveClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -85,33 +89,39 @@
 
 - (void)setEditImageView
 {
+    LabelModel *model = self.editModel;
     // 本地获取image
-    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ren" ofType:@"json"]];
+    NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@",model.title] ofType:@"json"]];
     NSDictionary *diction = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"marginInset : %@",diction[@"marginInset"]);
-    NSString *str = diction[@"marginInset"];
-    NSString *nowStr = [str substringWithRange:NSMakeRange(1, str.length - 2)];
-    NSArray *imagePoint = [nowStr componentsSeparatedByString:@","];
-   
-    NSLog(@"images.size.width   %f",self.backGroupView.constraints[1].constant);
+    
+    NSString *sizeStr = diction[@"size"];
+    NSString *pointStr = diction[@"marginInset"];
+    
+    NSString *sizeLength = [sizeStr substringWithRange:NSMakeRange(1, sizeStr.length - 2)];
+    NSArray *imageSize = [sizeLength componentsSeparatedByString:@","];
+    
+    NSString *pointLength = [pointStr substringWithRange:NSMakeRange(1, pointStr.length - 2)];
+    NSArray *pointSize = [pointLength componentsSeparatedByString:@","];
+    NSLog(@"images.size.width   %@",self.titles);
 //    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 100 , self.backGroupView.constraints[0].constant / 2 - 50, 200, 50)];
     UIImageView *imageView = [[UIImageView alloc] init];
     [imageView setImageWithURL:[NSURL URLWithString:self.editModel.imgbig]];
 //    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:diction[@"image"]]];
     
     self.compositeImageView = imageView;
-//    imageView.image = [UIImage imageNamed:diction[@"image"]];
-    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
-        imageView.size = CGSizeMake(220, 220);
-    } else {
-        imageView.size = CGSizeMake(237/2, 100/2);
-    }
+//    if ([self.isWaterMark isEqualToString:@"waterMark"]) {
+//        imageView.size = CGSizeMake(220, 220);
+//    } else {
+        imageView.size = CGSizeMake([imageSize[0] integerValue] / 2, [imageSize[1] integerValue] / 2);
+//    }
+    
     [self.backGroupView addSubview:imageView];
     imageView.center = CGPointMake(SCREEN_WIDTH / 2, self.backGroupView.constraints[0].constant / 2);
     
     
     UILabel *text = [[UILabel alloc] init];
-    text.size = CGSizeMake([imagePoint[2] intValue], [imagePoint[3] intValue]);
+    text.size = CGSizeMake([pointSize[2] intValue], [pointSize[3] intValue]);
     text.centerX = imageView.width / 2;
     text.centerY = imageView.height / 2;
     NSLog(@"SCREEN_WIDTH / 2  %f  self.backGroupView.constraints[0].constant / 2  %f",imageView.width / 2,self.backGroupView.constraints[0].constant / 2);

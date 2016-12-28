@@ -74,6 +74,8 @@ extern CGFloat water_space;
 @property (nonatomic ,strong) YBWaterMarkScrollView *waterMarkScrollView;
 @property (nonatomic ,strong) NSMutableArray *waterImageArray;
 
+@property (nonatomic ,strong) UIScrollView *batchScrollView;
+
 @end
 
 @implementation BatchPhotoViewController
@@ -82,11 +84,7 @@ extern CGFloat water_space;
     [super viewDidLoad];
     [self setNavigationTitle];
     self.view.backgroundColor = [UIColor blackColor];
-    BatchView *view = [[BatchView alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
-    UIImage *image = self.imageArray[0];
-    NSLog(@"image     %@",image);
     
-    [self.view addSubview:view];
     [self setBatchScrollView];
     [self setUpSomeThing];
     [nNotification addObserver:self selector:@selector(labelImage:) name:@"labelImage" object:nil];
@@ -100,15 +98,19 @@ extern CGFloat water_space;
     NSLog(@"...............%@",image);
     
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
-    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 220, 220) contentImage:image];
+    for (BatchView *view in self.batchScrollView.subviews) {
+        if ([view isKindOfClass:[BatchView class]]) {StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 110, 110) contentImage:image];
+            
+            sricker.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+            sricker.enabledControl = NO;
+            sricker.enabledBorder = NO;
+            sricker.delegate = self;
+            sricker.tag = self.imageIndex;
+            [view addSubview:sricker];
+            NSLog(@"sricker    %f",view.frame.size.height);
+        }
+    }
     
-    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
-    sricker.enabledControl = NO;
-    sricker.enabledBorder = NO;
-    sricker.delegate = self;
-    sricker.tag = self.imageIndex;
-    NSLog(@"sricker    %@",sricker);
-    [self.pasterImageView addSubview:sricker];
     self.imageIndex++;
 }
 
@@ -119,15 +121,20 @@ extern CGFloat water_space;
     NSLog(@"...............%@",image);
     
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
-    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:image];
     
-    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
-    sricker.enabledControl = NO;
-    sricker.enabledBorder = NO;
-    sricker.delegate = self;
-    sricker.tag = self.imageIndex;
-    NSLog(@"sricker    %@",sricker);
-    [self.pasterImageView addSubview:sricker];
+    for (BatchView *view in self.batchScrollView.subviews) {
+        if ([view isKindOfClass:[BatchView class]]) {StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:image];
+            
+            sricker.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+            sricker.enabledControl = NO;
+            sricker.enabledBorder = NO;
+            sricker.delegate = self;
+            sricker.tag = self.imageIndex;
+            [view addSubview:sricker];
+            NSLog(@"sricker    %f",view.frame.size.height);
+        }
+    }
+    
     self.imageIndex++;
 }
 
@@ -284,20 +291,32 @@ extern CGFloat water_space;
 
 - (void)saveBatchClick:(UIButton *)sender
 {
-    
+    if (self.selectedSticker) {
+        self.selectedSticker.enabledControl = NO;
+        self.selectedSticker.enabledBorder = NO;
+        self.selectedSticker = nil;
+    }
+    [self doneEdit];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)setBatchScrollView
 {
+    self.automaticallyAdjustsScrollViewInsets = NO;
     UIScrollView *batchScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 75, SCREEN_WIDTH, 396)];
+    self.batchScrollView = batchScroll;
     batchScroll.backgroundColor = [UIColor whiteColor];
-    batchScroll.contentSize = CGSizeMake(SCREEN_WIDTH * self.imageArray.count, 396);
+    batchScroll.contentSize = CGSizeMake(SCREEN_WIDTH * self.imageArray.count, batchScroll.frame.size.height);
     batchScroll.showsVerticalScrollIndicator = NO;
     batchScroll.bounces = NO;
     batchScroll.indicatorStyle = UIScrollViewKeyboardDismissModeNone;
     batchScroll.pagingEnabled = YES;
+//    batchScroll.alwaysBounceHorizontal = NO;
+    batchScroll.alwaysBounceVertical = NO;
+    batchScroll.showsHorizontalScrollIndicator = NO;
+    batchScroll.showsVerticalScrollIndicator = NO;
     for (int i = 0; i < self.imageArray.count; i++) {
-        BatchView *view = [[BatchView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, 396)];
+        BatchView *view = [[BatchView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, batchScroll.frame.size.height)];
         UIImage *image = self.imageArray[i];
         view.batchImage = image;
         [batchScroll addSubview:view];
@@ -407,7 +426,6 @@ extern CGFloat water_space;
     self.bottomBackView.hidden = NO;
     self.pasterScrollView.alpha = 0.0;
     self.pasterScrollView.hidden = YES;
-    [self doneEdit];
 }
 
 - (void)cancelClick:(UIButton *)sender
@@ -423,16 +441,50 @@ extern CGFloat water_space;
 - (void)pasterTag:(NSInteger)pasterTag pasterImage:(UIImage *)pasterImage
 {
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
-    StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:pasterImage];
     
-    sricker.center = CGPointMake(self.pasterImageView.frame.size.width/2, self.pasterImageView.frame.size.height/2);
-    sricker.enabledControl = NO;
-    sricker.enabledBorder = NO;
-    sricker.delegate = self;
-    sricker.tag = pasterTag;
-    NSLog(@"sricker    %@",sricker);
-    [self.pasterImageView addSubview:sricker];
+    for (BatchView *view in self.batchScrollView.subviews) {
+        if ([view isKindOfClass:[BatchView class]]) {StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 160, 45) contentImage:pasterImage];
+            
+            sricker.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+            sricker.enabledControl = NO;
+            sricker.enabledBorder = NO;
+            sricker.delegate = self;
+            sricker.tag = self.imageIndex;
+            [view addSubview:sricker];
+            NSLog(@"sricker    %f",view.frame.size.height);
+        }
+    }
 }
+#pragma mark  水印点击
+- (void)firstTag:(NSInteger)first
+{
+    MaterialListViewController *material = [[MaterialListViewController alloc] init];
+//    material.orginalImage = self.originalImage;
+    material.isWaterMark = @"waterMark";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:material];
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:^{
+        
+    }];
+}
+
+- (void)waterMarkTag:(NSInteger)waterTag waterImage:(UIImage *)waterImage
+{
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.pasterImageView];
+    for (BatchView *view in self.batchScrollView.subviews) {
+        if ([view isKindOfClass:[BatchView class]]) {StickerView *sricker = [[StickerView alloc] initWithContentFrame:CGRectMake(0, 0, 110, 110) contentImage:waterImage];
+            
+            sricker.center = CGPointMake(view.frame.size.width/2, view.frame.size.height/2);
+            sricker.enabledControl = NO;
+            sricker.enabledBorder = NO;
+            sricker.delegate = self;
+            sricker.tag = self.imageIndex;
+            [view addSubview:sricker];
+            NSLog(@"sricker    %f",view.frame.size.height);
+        }
+    }
+}
+
+
 
 - (void)sendTag:(NSInteger)firstTag
 {
@@ -512,6 +564,7 @@ extern CGFloat water_space;
         self.selectedSticker.enabledBorder = NO;
         self.selectedSticker.enabledControl = NO;
     }
+    self.batchScrollView.scrollEnabled = NO;
     self.selectedSticker = stickerView;
     self.selectedSticker.enabledBorder = YES;
     self.selectedSticker.enabledControl = YES;
@@ -551,6 +604,7 @@ extern CGFloat water_space;
         self.selectedSticker.enabledBorder = NO;
         self.selectedSticker = nil;
     }
+    self.batchScrollView.scrollEnabled = YES;
 }
 
 
@@ -559,21 +613,38 @@ extern CGFloat water_space;
 #pragma mark  保存图片
 - (UIImage *)doneEdit
 {
-    CGFloat org_width = SCREEN_WIDTH ;
-    CGFloat org_heigh = 396 ;
-    CGFloat rateOfScreen = org_width / org_heigh ;
-    CGFloat inScreenH = self.pasterImageView.frame.size.width / rateOfScreen ;
     
-    CGRect rect = CGRectZero ;
-    rect.size = CGSizeMake(self.pasterImageView.frame.size.width, inScreenH) ;
-    rect.origin = CGPointMake(0, (self.pasterImageView.frame.size.height - inScreenH) / 2) ;
-    
-    UIImage *imgTemp = [UIImage getImageFromView:self.pasterImageView] ;
-    UIImage *imgCut = [UIImage squareImageFromImage:imgTemp scaledToSize:rect.size.width] ;
-    
+    NSLog(@"self.batchScrollView.subviews ----   %lu",(unsigned long)self.batchScrollView.subviews.count);
+    UIImage *imgCut = nil;
+    for (BatchView *view in self.batchScrollView.subviews) {
+        if ([view isKindOfClass:[BatchView class]]) {
+            CGFloat org_width = SCREEN_WIDTH ;
+            CGFloat org_heigh = 396 ;
+            CGFloat rateOfScreen = org_width / org_heigh ;
+            CGFloat inScreenH = SCREEN_WIDTH / rateOfScreen ;
+            
+            CGRect rect = CGRectZero ;
+            rect.size = CGSizeMake(SCREEN_WIDTH, inScreenH) ;
+            rect.origin = CGPointMake(0, (396 - inScreenH) / 2) ;
+            UIImage *imgTemp = [UIImage getImageFromView:view] ;
+            imgCut = [UIImage squareImageFromImage:imgTemp scaledToSize:rect.size.width] ;
+            NSLog(@"imgCut   --------   %@",imgCut);
+            [self loadImageFinished:imgCut];
+        }
+    }
     return imgCut;
 }
 
+- (void)loadImageFinished:(UIImage *)image
+{
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    
+    NSLog(@"image = %@, error = %@, contextInfo = %@", image, error, contextInfo);
+}
 
 
 

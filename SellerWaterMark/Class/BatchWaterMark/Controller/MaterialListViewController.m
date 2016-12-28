@@ -66,7 +66,11 @@
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0,0.0, 0)];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 7, 0, 0)];
     [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -14;//这个值可以根据自己需要自己调整
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];
 }
 #pragma mark collection
 - (void)setLabelCollection
@@ -112,6 +116,7 @@
 {
     EditLabelViewController *editV = [[EditLabelViewController alloc] init];
     editV.editModel = self.listArray[indexPath.row];
+    
     editV.originalImage = self.orginalImage;
     if ([self.isWaterMark isEqualToString:@"waterMark"]) {
         editV.isWaterMark = @"waterMark";

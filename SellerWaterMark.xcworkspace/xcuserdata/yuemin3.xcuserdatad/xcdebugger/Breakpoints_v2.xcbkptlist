@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/AppDelegate.m"
-            timestampString = "504586776.807629"
+            filePath = "SellerWaterMark/Class/BatchWaterMark/Controller/EditLabelViewController.m"
+            timestampString = "504620565.378526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-setEditImageView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/AppDelegate.m"
-            timestampString = "504586820.699571"
+            filePath = "SellerWaterMark/Class/BatchWaterMark/Controller/EditLabelViewController.m"
+            timestampString = "504620565.378526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-setEditImageView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/AppDelegate.m"
-            timestampString = "504586823.668339"
+            filePath = "SellerWaterMark/Class/EasyPuzzle/Controller/ChoosePhotosViewController.m"
+            timestampString = "504618967.20951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-applicationWillResignActive:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-setNavigationTitle"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

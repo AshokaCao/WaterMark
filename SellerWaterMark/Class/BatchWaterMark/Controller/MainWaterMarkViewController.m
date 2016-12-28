@@ -523,7 +523,13 @@ static CGFloat bottomButtonH = 55;
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0,0.0, 0)];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 7, 0, 0)];
     [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -14;//这个值可以根据自己需要自己调整
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];
+    
     WS(weakSelf);
     YBWeak(MainWaterMarkViewController, weakMy);
     //按钮的点击事件封装的block

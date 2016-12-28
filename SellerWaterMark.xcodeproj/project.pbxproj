@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510852821E13C84100F00B2D /* 1003_0_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510852801E13C84100F00B2D /* 1003_0_2@2x.png */; };
+		510852831E13C84100F00B2D /* 1003_0_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510852811E13C84100F00B2D /* 1003_0_2@3x.png */; };
+		510852851E13D81300F00B2D /* 1003_0_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 510852841E13D81300F00B2D /* 1003_0_1.json */; };
+		510852881E13D82F00F00B2D /* 1003_0_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510852861E13D82F00F00B2D /* 1003_0_1@2x.png */; };
+		510852891E13D82F00F00B2D /* 1003_0_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 510852871E13D82F00F00B2D /* 1003_0_1@3x.png */; };
+		5108528B1E13E79F00F00B2D /* 1004_0_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 5108528A1E13E79F00F00B2D /* 1004_0_2.json */; };
 		5164FB911DED65D000AFA0FA /* MaterialListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164FB8F1DED65D000AFA0FA /* MaterialListViewController.m */; };
 		5164FB921DED65D000AFA0FA /* MaterialListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5164FB901DED65D000AFA0FA /* MaterialListViewController.xib */; };
 		5164FB961DED73D700AFA0FA /* LabelListItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164FB941DED73D700AFA0FA /* LabelListItemCollectionViewCell.m */; };
@@ -17,9 +23,7 @@
 		517DF4B01E0BC29700EBEF8F /* GoodsPosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517DF4AE1E0BC29700EBEF8F /* GoodsPosterViewController.xib */; };
 		517DF4B41E0BD3BA00EBEF8F /* ChoosePostersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 517DF4B21E0BD3BA00EBEF8F /* ChoosePostersViewController.m */; };
 		517DF4B51E0BD3BA00EBEF8F /* ChoosePostersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 517DF4B31E0BD3BA00EBEF8F /* ChoosePostersViewController.xib */; };
-		518124B71DF10B7F0047A8BC /* image_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518124B41DF10B7F0047A8BC /* image_5@2x.png */; };
-		518124B81DF10B7F0047A8BC /* preview_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 518124B51DF10B7F0047A8BC /* preview_5.png */; };
-		518124B91DF10B7F0047A8BC /* ren.json in Resources */ = {isa = PBXBuildFile; fileRef = 518124B61DF10B7F0047A8BC /* ren.json */; };
+		518124B91DF10B7F0047A8BC /* 1003_0_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 518124B61DF10B7F0047A8BC /* 1003_0_2.json */; };
 		518124BC1DF11FDA0047A8BC /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 518124BB1DF11FDA0047A8BC /* UIView+Extension.m */; };
 		518124C41DF1645C0047A8BC /* UserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518124C21DF1645C0047A8BC /* UserDataViewController.m */; };
 		518124C51DF1645C0047A8BC /* UserDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 518124C31DF1645C0047A8BC /* UserDataViewController.xib */; };
@@ -148,6 +152,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		510852801E13C84100F00B2D /* 1003_0_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1003_0_2@2x.png"; sourceTree = "<group>"; };
+		510852811E13C84100F00B2D /* 1003_0_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1003_0_2@3x.png"; sourceTree = "<group>"; };
+		510852841E13D81300F00B2D /* 1003_0_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1003_0_1.json; sourceTree = "<group>"; };
+		510852861E13D82F00F00B2D /* 1003_0_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1003_0_1@2x.png"; sourceTree = "<group>"; };
+		510852871E13D82F00F00B2D /* 1003_0_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1003_0_1@3x.png"; sourceTree = "<group>"; };
+		5108528A1E13E79F00F00B2D /* 1004_0_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1004_0_2.json; sourceTree = "<group>"; };
 		5164FB8E1DED65CF00AFA0FA /* MaterialListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialListViewController.h; sourceTree = "<group>"; };
 		5164FB8F1DED65D000AFA0FA /* MaterialListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialListViewController.m; sourceTree = "<group>"; };
 		5164FB901DED65D000AFA0FA /* MaterialListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaterialListViewController.xib; sourceTree = "<group>"; };
@@ -164,9 +174,7 @@
 		517DF4B11E0BD3BA00EBEF8F /* ChoosePostersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoosePostersViewController.h; sourceTree = "<group>"; };
 		517DF4B21E0BD3BA00EBEF8F /* ChoosePostersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoosePostersViewController.m; sourceTree = "<group>"; };
 		517DF4B31E0BD3BA00EBEF8F /* ChoosePostersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoosePostersViewController.xib; sourceTree = "<group>"; };
-		518124B41DF10B7F0047A8BC /* image_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_5@2x.png"; sourceTree = "<group>"; };
-		518124B51DF10B7F0047A8BC /* preview_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = preview_5.png; sourceTree = "<group>"; };
-		518124B61DF10B7F0047A8BC /* ren.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ren.json; sourceTree = "<group>"; };
+		518124B61DF10B7F0047A8BC /* 1003_0_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1003_0_2.json; sourceTree = "<group>"; };
 		518124BA1DF11FDA0047A8BC /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		518124BB1DF11FDA0047A8BC /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		518124C11DF1645C0047A8BC /* UserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataViewController.h; sourceTree = "<group>"; };
@@ -374,9 +382,12 @@
 		518124B11DF10B610047A8BC /* LabelMark */ = {
 			isa = PBXGroup;
 			children = (
-				518124B41DF10B7F0047A8BC /* image_5@2x.png */,
-				518124B51DF10B7F0047A8BC /* preview_5.png */,
-				518124B61DF10B7F0047A8BC /* ren.json */,
+				510852801E13C84100F00B2D /* 1003_0_2@2x.png */,
+				510852811E13C84100F00B2D /* 1003_0_2@3x.png */,
+				518124B61DF10B7F0047A8BC /* 1003_0_2.json */,
+				510852861E13D82F00F00B2D /* 1003_0_1@2x.png */,
+				510852871E13D82F00F00B2D /* 1003_0_1@3x.png */,
+				510852841E13D81300F00B2D /* 1003_0_1.json */,
 			);
 			path = LabelMark;
 			sourceTree = "<group>";
@@ -392,6 +403,7 @@
 		518124B31DF10B610047A8BC /* WaterMark */ = {
 			isa = PBXGroup;
 			children = (
+				5108528A1E13E79F00F00B2D /* 1004_0_2.json */,
 			);
 			path = WaterMark;
 			sourceTree = "<group>";
@@ -1114,6 +1126,7 @@
 			files = (
 				51A8B7661DEBFEE3007B751C /* 4.png in Resources */,
 				519F3EA21DF7F8C100DC4B56 /* PhotosCollectionViewCell.xib in Resources */,
+				510852851E13D81300F00B2D /* 1003_0_1.json in Resources */,
 				51A8B7651DEBFEE3007B751C /* 3.png in Resources */,
 				51A18B4A1DF947DA004A57D3 /* number_four_style_1.plist in Resources */,
 				517DF4B51E0BD3BA00EBEF8F /* ChoosePostersViewController.xib in Resources */,
@@ -1131,9 +1144,11 @@
 				5195AD1B1E123C80006E542B /* BatchPhotoViewController.xib in Resources */,
 				51A8B7691DEC1D10007B751C /* bigShadow.png in Resources */,
 				51A18B4F1DF947DA004A57D3 /* number_four_style_6.plist in Resources */,
+				510852891E13D82F00F00B2D /* 1003_0_1@3x.png in Resources */,
 				51A8B7641DEBFEE3007B751C /* 2.png in Resources */,
 				51A18B481DF947DA004A57D3 /* number_five_style_5.plist in Resources */,
 				51C5ABE21E0D0A3A00A70424 /* patterns_7.json in Resources */,
+				5108528B1E13E79F00F00B2D /* 1004_0_2.json in Resources */,
 				51A18B4E1DF947DA004A57D3 /* number_four_style_5.plist in Resources */,
 				51A18B4D1DF947DA004A57D3 /* number_four_style_4.plist in Resources */,
 				51A18B271DF8FA59004A57D3 /* PuzzleViewController.xib in Resources */,
@@ -1147,10 +1162,11 @@
 				51A18B451DF947DA004A57D3 /* number_five_style_2.plist in Resources */,
 				51A8B76E1DEC2F0F007B751C /* LabelTextViewController.xib in Resources */,
 				518124C51DF1645C0047A8BC /* UserDataViewController.xib in Resources */,
+				510852831E13C84100F00B2D /* 1003_0_2@3x.png in Resources */,
 				51A8B70D1DEBCD83007B751C /* MainWaterMarkViewController.xib in Resources */,
+				510852821E13C84100F00B2D /* 1003_0_2@2x.png in Resources */,
 				5164FB921DED65D000AFA0FA /* MaterialListViewController.xib in Resources */,
 				5185E9221E013DE3009F6B89 /* StickerView.bundle in Resources */,
-				518124B71DF10B7F0047A8BC /* image_5@2x.png in Resources */,
 				77985F0C1E0C0F9200A3C8D8 /* WaterFallCollectionViewCell.xib in Resources */,
 				51C5ABDC1E0D0A3A00A70424 /* patterns_1.json in Resources */,
 				51A18B4B1DF947DA004A57D3 /* number_four_style_2.plist in Resources */,
@@ -1159,18 +1175,18 @@
 				519F3E9D1DF7F8AC00DC4B56 /* ChoosePictureCollectionViewCell.xib in Resources */,
 				519F3E841DF7A84600DC4B56 /* ChoosePhotosViewController.xib in Resources */,
 				51C5ABDD1E0D0A3A00A70424 /* patterns_2.json in Resources */,
-				518124B81DF10B7F0047A8BC /* preview_5.png in Resources */,
 				51A18B541DF947DA004A57D3 /* number_three_style_5.plist in Resources */,
 				77EE32E81E0CCAA2007AF146 /* 1.plist in Resources */,
 				51B7FEDB1DE293260086574F /* MainViewViewController.xib in Resources */,
 				51A18B521DF947DA004A57D3 /* number_three_style_3.plist in Resources */,
 				51A18B461DF947DA004A57D3 /* number_five_style_3.plist in Resources */,
 				51A0B0861DE8352700AF1FD2 /* PersonalDataViewController.xib in Resources */,
-				518124B91DF10B7F0047A8BC /* ren.json in Resources */,
+				518124B91DF10B7F0047A8BC /* 1003_0_2.json in Resources */,
 				51B9D2BB1DE6B69C00B7DECD /* LogingViewController.xib in Resources */,
 				51A8B7671DEBFEE3007B751C /* 5.png in Resources */,
 				51A18B511DF947DA004A57D3 /* number_three_style_2.plist in Resources */,
 				51A18B4C1DF947DA004A57D3 /* number_four_style_3.plist in Resources */,
+				510852881E13D82F00F00B2D /* 1003_0_1@2x.png in Resources */,
 				51A18B571DF947DA004A57D3 /* number_two_style_2.plist in Resources */,
 				51C5ABE01E0D0A3A00A70424 /* patterns_5.json in Resources */,
 				519F3E871DF7ACCB00DC4B56 /* ASLocalized.strings in Resources */,

@@ -1,0 +1,12 @@
+{
+    "preview": "preview_5",
+    "image": "image_5",
+    "isHorizontal": "true",
+    "textColor": "#ffffff",
+    "isBold": "false",
+    "isShadow": "false",
+    "fontSize": 15,
+    "text": "点击修改",
+    "size": "{440,440}",
+    "marginInset": "{16,8,154,196}"
+}

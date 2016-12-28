@@ -21,6 +21,7 @@
 @property (nonatomic ,strong) LabelModel *editModel;
 @property (nonatomic ,strong) UIImage *originalImage;
 @property (nonatomic ,strong) NSString *isWaterMark;
+@property (nonatomic ,strong) NSString *titles;
 
 @property (nonatomic ,assign) id<EditLabelViewControllerDelegate> delegate;
 

@@ -93,7 +93,7 @@
     self.navigationItem.titleView = naTitleView;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(14, 0, 70, 50);
+    button.frame = CGRectMake(7, 0, 70, 50);
     [button setTitle:ASLocalizedString(@"返回") forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"data_navi_back"] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor colorWithHexString:@"333333"] forState:UIControlStateNormal];
@@ -101,10 +101,16 @@
     [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0,0.0, 0)];
     [button setTitleEdgeInsets:UIEdgeInsetsMake(0, 7, 0, 0)];
     [button addTarget:self action:@selector(backClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIBarButtonItem *leftBarButtonItems = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    UIBarButtonItem *nagetiveSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    nagetiveSpacer.width = -14;//这个值可以根据自己需要自己调整
+    self.navigationItem.leftBarButtonItems = @[nagetiveSpacer, leftBarButtonItems];
+    
+    
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(14, 0, 70, 50);
+    rightBtn.frame = CGRectMake(7, 0, 70, 50);
     [rightBtn setImage:[UIImage imageNamed:@"puzzle_navi_photo"] forState:UIControlStateNormal];
     [rightBtn addTarget:self action:@selector(photoClick:) forControlEvents:UIControlEventTouchUpInside];
     rightBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;

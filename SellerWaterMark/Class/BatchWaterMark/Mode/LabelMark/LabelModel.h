@@ -15,5 +15,6 @@
 @property (nonatomic ,strong) NSString *category;
 @property (nonatomic ,strong) NSString *fdi;
 @property (nonatomic ,strong) NSArray *imginfo;
+@property (nonatomic ,strong) NSString *title;
 
 @end

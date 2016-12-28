@@ -1,4 +1,4 @@
-﻿{
+{
     "preview": "preview_5",
     "image": "image_5",
     "isHorizontal": "true",
@@ -7,6 +7,6 @@
     "isShadow": "false",
     "fontSize": 15,
     "text": "点击修改",
-    "size": "{237, 100}",
-    "marginInset": "{16,8,80,23}"
+    "size": "{366,90}",
+    "marginInset": "{16,8,183,45}"
 }
