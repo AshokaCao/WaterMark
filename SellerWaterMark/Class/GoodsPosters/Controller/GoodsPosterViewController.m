@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *templateLine;
 @property (weak, nonatomic) IBOutlet UIImageView *backLine;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
-@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
+//@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (nonatomic ,strong) NSMutableArray *imageLocation;
 @property (nonatomic ,strong) NSMutableArray *textLocation;
 
@@ -26,10 +26,21 @@
 
 @implementation GoodsPosterViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
     [self setNavigationTitle];
     [self setUpUI];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -78,13 +89,20 @@
     self.imageLocation = [NSMutableArray array];
     self.textLocation = [NSMutableArray array];
     self.imageBackgroudView.backgroundColor = [UIColor whiteColor];
-    [self.posterImageView setImageWithURL:[NSURL URLWithString:self.posterModel.imgbig]];
+//    UIImageView *imageTest = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 100, 200)];
+//    
+//    imageTest.image = [UIImage imageNamed:@"1"];
+//    
+//    [self.imageBackgroudView addSubview:imageTest];
+    
+    
+    
     // 本地获取image
     NSData *JSONData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"patterns_1" ofType:@"json"]];
     NSArray *diction = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
     
     for (NSDictionary *dic in diction) {
-//        NSLog(@"diction : %@",dic);
+        NSLog(@"diction : %@",dic);
         GoodsPosterModel *model = [[GoodsPosterModel alloc] init];
         [model setValuesForKeysWithDictionary:dic[@"info"]];
         NSLog(@"model.isImage   %d",model.isImage);
@@ -98,6 +116,34 @@
 //    NSString *str = diction[@"marginInset"];
 //    NSString *nowStr = [str substringWithRange:NSMakeRange(1, str.length - 2)];
 //    NSArray *imagePoint = [nowStr componentsSeparatedByString:@","];
+    for (int i = 0 ; i < self.imageLocation.count; i++) {
+        GoodsPosterModel *model = self.imageLocation[i];
+        CGFloat leftNum = [model.left floatValue] * 0.68;
+        CGFloat topNum = [model.top floatValue] * 0.577;
+        CGFloat withNum;
+        CGFloat heightNum;
+        NSString *withStr = [NSString stringWithFormat:@"%@",model.with];
+        NSString *heightStr = [NSString stringWithFormat:@"%@",model.height];
+        if ([withStr isEqualToString:@"all"]) {
+            withNum = self.imageBackgroudView.frame.size.width;
+        } else {
+            withNum = [model.with floatValue] * 0.68;
+        }
+        if ([heightStr isEqualToString:@"all"]) {
+            heightNum = self.imageBackgroudView.frame.size.height;
+        } else {
+            heightNum = [model.height floatValue] * 0.577;
+        }
+        UIImageView *imagesView = [[UIImageView alloc] initWithFrame:CGRectMake(leftNum, topNum, withNum, heightNum)];
+        NSLog(@"leftNum--   %f    leftNum--   %f    leftNum--   %f  leftNum--   %f",leftNum,topNum,withNum,heightNum);
+        imagesView.image = self.imageArray[i];
+        [self.imageBackgroudView addSubview:imagesView];
+    }
+    
+    UIImageView *testImage = [[UIImageView alloc] initWithFrame:self.imageBackgroudView.bounds];
+    
+    [testImage setImageWithURL:[NSURL URLWithString:self.posterModel.imgbig]];
+    [self.imageBackgroudView addSubview:testImage];
 }
 
 - (void)backClick:(UIButton *)sender
