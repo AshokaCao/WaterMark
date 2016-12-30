@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "LabelModel.h"
 @interface XRImage : NSObject
 @property (nonatomic, strong) NSURL *imageURL;
 @property (nonatomic, assign) CGFloat imageW;
 @property (nonatomic, assign) CGFloat imageH;
 
-+ (instancetype)imageWithImageDic:(NSDictionary *)imageDic;
++ (instancetype)imageWithImageDic:(LabelModel *)imageDic;
 @end

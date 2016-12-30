@@ -12,10 +12,10 @@
 #ifdef __OBJC__
 #ifdef DEBUG
 # define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#define tLocalUrl @"192.168.1.188"
+#define tLocalUrl @"115.29.247.29"
 #else
 # define DLog(...)
-#define tLocalUrl @"115.29.247.29"
+#define tLocalUrl @"192.168.1.188"
 #endif
 //获取屏幕 宽度、高度
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)

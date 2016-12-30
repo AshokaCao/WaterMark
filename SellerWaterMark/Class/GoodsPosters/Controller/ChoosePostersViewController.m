@@ -98,7 +98,8 @@
 //根据item的宽度与indexPath计算每一个item的高度
 - (CGFloat)waterfallLayout:(XRWaterfallLayout *)waterfallLayout itemHeightForWidth:(CGFloat)itemWidth atIndexPath:(NSIndexPath *)indexPath {
     //根据图片的原始尺寸，及显示宽度，等比例缩放来计算显示高度
-    XRImage *image = self.imageArray[indexPath.item];
+    LabelModel *model = self.waterListArray[indexPath.item];
+    XRImage *image = [XRImage imageWithImageDic:model];
     return image.imageH / image.imageW * itemWidth;
 }
 

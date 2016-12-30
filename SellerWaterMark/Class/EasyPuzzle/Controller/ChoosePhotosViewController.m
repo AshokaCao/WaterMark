@@ -136,7 +136,7 @@
             [imageArray addObject:self.originalPhoto[index.row]];
         }
         puzzle.imageArray = imageArray;
-        NSLog(@"imageArray - %@",imageArray);
+//        NSLog(@"imageArray - %@",imageArray);
         [self.navigationController pushViewController:puzzle animated:YES];
     } else if ([self.isPuzzle isEqualToString:@"batch"]) {
         NSLog(@"lksjflksj");
@@ -218,7 +218,7 @@
         
         // 从asset中获得图片
         [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            NSLog(@"%@", result);
+//            NSLog(@"%@", result);
             [array addObject:result];
         }];
     }
@@ -301,7 +301,7 @@
                 [self.photoCollectionView reloadData];
             }
             
-            NSLog(@"self.photoArray- %@'",self.indexArray);
+//            NSLog(@"self.photoArray- %@'",self.indexArray);
             
             //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
         } else if ([collectionView isEqual:self.photoCollectionView]) {
@@ -321,7 +321,7 @@
                 [self.photoCollectionView reloadData];
             }
             
-            NSLog(@"self.photoArray- %@'",self.indexArray);
+//            NSLog(@"self.photoArray- %@'",self.indexArray);
             
             //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
         } else if ([collectionView isEqual:self.photoCollectionView]) {
@@ -351,7 +351,7 @@
                 }
             }
             
-            NSLog(@"self.photoArray- %@'",self.indexArray);
+//            NSLog(@"self.photoArray- %@'",self.indexArray);
             
             //        DLog(@"ChoosePictureCollectionViewCell *  %@",cell);
         } else if ([collectionView isEqual:self.photoCollectionView]) {

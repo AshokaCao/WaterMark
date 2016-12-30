@@ -4,18 +4,28 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SellerWaterMark/Class/GoodsPosters/Controller/GoodsPosterViewController.m"
-            timestampString = "504693306.158821"
+            filePath = "SellerWaterMark/Class/EasyPuzzle/Controller/ChoosePhotosViewController.m"
+            timestampString = "504784170.508174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "-setUpUI"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-enumerateAssetsInAssetCollection:original:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

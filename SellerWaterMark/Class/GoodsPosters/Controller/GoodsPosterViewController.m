@@ -10,6 +10,7 @@
 #import "UIColor+Help.h"
 #import "UIImageView+AFNetworking.h"
 #import "GoodsPosterModel.h"
+#import "MeituImageEditView.h"
 
 @interface GoodsPosterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *imageBackgroudView;
@@ -21,6 +22,9 @@
 //@property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (nonatomic ,strong) NSMutableArray *imageLocation;
 @property (nonatomic ,strong) NSMutableArray *textLocation;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBackgroudTop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBackgroudHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageBackgroudWidth;
 
 @end
 
@@ -42,6 +46,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSString *imagePosterHeight = [NSString stringWithFormat:@"%@",self.posterModel.thumheight];
+    NSString *imagePosterWeith = [NSString stringWithFormat:@"%@",self.posterModel.thumwidth];
+    if ([imagePosterWeith isEqualToString:imagePosterHeight]) {
+        self.imageBackgroudTop.constant = 109;
+        self.imageBackgroudWidth.constant = 320;
+        self.imageBackgroudHeight.constant = 320;
+    } else {
+        self.imageBackgroudTop.constant = 60;
+        self.imageBackgroudWidth.constant = 228;
+        self.imageBackgroudHeight.constant = 406;
+    }
 }
 
 
@@ -118,8 +133,8 @@
 //    NSArray *imagePoint = [nowStr componentsSeparatedByString:@","];
     for (int i = 0 ; i < self.imageLocation.count; i++) {
         GoodsPosterModel *model = self.imageLocation[i];
-        CGFloat leftNum = [model.left floatValue] * 0.68;
-        CGFloat topNum = [model.top floatValue] * 0.577;
+        CGFloat leftNum = [model.left floatValue] * 0.6;
+        CGFloat topNum = [model.top floatValue] * 0.6;
         CGFloat withNum;
         CGFloat heightNum;
         NSString *withStr = [NSString stringWithFormat:@"%@",model.with];
@@ -127,18 +142,35 @@
         if ([withStr isEqualToString:@"all"]) {
             withNum = self.imageBackgroudView.frame.size.width;
         } else {
-            withNum = [model.with floatValue] * 0.68;
+            withNum = [model.with floatValue] * 0.6;
         }
         if ([heightStr isEqualToString:@"all"]) {
             heightNum = self.imageBackgroudView.frame.size.height;
         } else {
-            heightNum = [model.height floatValue] * 0.577;
+            heightNum = [model.height floatValue] * 0.6;
         }
         UIImageView *imagesView = [[UIImageView alloc] initWithFrame:CGRectMake(leftNum, topNum, withNum, heightNum)];
         NSLog(@"leftNum--   %f    leftNum--   %f    leftNum--   %f  leftNum--   %f",leftNum,topNum,withNum,heightNum);
         imagesView.image = self.imageArray[i];
-        [self.imageBackgroudView addSubview:imagesView];
+        
+        CGRect rect = CGRectMake(leftNum, topNum, withNum, heightNum);
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0, 0)];
+        [path addLineToPoint:CGPointMake(rect.size.width, 0)];
+        [path addLineToPoint:CGPointMake(rect.size.width, rect.size.height)];
+        [path addLineToPoint:CGPointMake(0, rect.size.height)];
+        [path closePath];
+        
+        MeituImageEditView *imageView = [[MeituImageEditView alloc] initWithFrame:rect];
+        [imageView setClipsToBounds:YES];
+        [imageView setBackgroundColor:[UIColor grayColor]];
+        imageView.tag = i;
+        imageView.realCellArea = path;
+        //    imageView.tapDelegate = self;
+        [imageView setImageViewData:self.imageArray[i]];
+        [self.imageBackgroudView addSubview:imageView];
     }
+    
     
     UIImageView *testImage = [[UIImageView alloc] initWithFrame:self.imageBackgroudView.bounds];
     

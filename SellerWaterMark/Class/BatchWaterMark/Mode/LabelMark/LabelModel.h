@@ -16,5 +16,7 @@
 @property (nonatomic ,strong) NSString *fdi;
 @property (nonatomic ,strong) NSArray *imginfo;
 @property (nonatomic ,strong) NSString *title;
+@property (nonatomic ,strong) NSString *thumheight;
+@property (nonatomic ,strong) NSString *thumwidth;
 
 @end
